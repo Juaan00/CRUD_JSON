@@ -1,6 +1,11 @@
 import funciones    #se llaman al modulo funciones.py
 '''
-PROYECTO FINAL PROGRAMACIÓN DE COMPUTADORES, GRUPO 15
+╬════════════════════════════════════════════════════════════════════════════════════════╬
+╬                                                                                        ╬
+╬       __________PROYECTO FINAL PROGRAMACIÓN DE COMPUTADORES, GRUPO 15__________        ╬
+╬                                                                                        ╬
+╬════════════════════════════════════════════════════════════════════════════════════════╬
+
 INTEGRANTES GRUPO [22]:
 - Simón Velásquez Silva
 - Julián David nieto Rodríguez
@@ -19,6 +24,7 @@ El proyecto se divide en 4 archivos:
 while True:  #Se crea un ciclo infinito para que el programa se ejecute hasta que el usuario lo decida
     funciones.pantalla()
     try:
+        entrada_usuario=None
         entrada_usuario=int(input(f"\n{'(╯°□°）╯ ┻━┻ Escoja una opción:       ':>45}"))     #se pide la entrada al usuario 
         if entrada_usuario == 0:
             funciones.adios()
@@ -32,6 +38,6 @@ while True:  #Se crea un ciclo infinito para que el programa se ejecute hasta qu
         elif entrada_usuario == 4:
             funciones.opcion4()
         else:
-            funciones.error_numerico(entrada_usuario)
+            funciones.error(entrada_usuario)
     except ValueError:
-        funciones.error_alfabetico()
+        funciones.error(entrada_usuario)
