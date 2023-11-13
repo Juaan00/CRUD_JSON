@@ -1,44 +1,65 @@
 import funcion_json     #se llama al modulo funcion_json.py
 from color import Color     #se llama al modulo color.py
 from os import name, system     #se llama al modulo os
-# from subprocess import call
+from subprocess import call
 
 '''
-MODULO FUNCIONES
-Todas las acciones principales del código serán llamadas de este archivo.
+╬════════════════════════════════════════════════════════════════════════════════════════╬
+╬                                                                                        ╬
+╬                         __________MODULO FUNCIONES__________                           ╬
+╬        Todas las acciones principales del código serán llamadas de este archivo.       ╬
+╬                                                                                        ╬
+╬════════════════════════════════════════════════════════════════════════════════════════╬
 '''
-datos={}
-lista_de_materias = []
+
+datos={}    #diccionario para almacenar los datos del estudiante
+lista_de_materias = []  #lista para almacenar las materias del estudiante
+
+'''
+╬════════════════════════════════════════════════════════════════════════════════════════╬
+╬                                                                                        ╬
+╬                    __________FUNCIONES SECUNDARIAS__________                           ╬
+╬        Funciones que simplifican acciones repetitivas a lo largo del código            ╬
+╬                                                                                        ╬
+╬════════════════════════════════════════════════════════════════════════════════════════╬
+'''
 
 def main():  #función principal
-    print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.CYAN}{Color.BOLD}{'Modulo funciones, este archivo no se ejecutará automaticamente':>78}{Color.RESET}{'╬':>11}\n╬{'╬':>89}\n╬{'═'*88}╬")
+    print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.CYAN}{Color.BOLD}{'Modulo funciones, este archivo no se ejecutará directamente':>78}{Color.RESET}{'╬':>11}\n╬{'╬':>89}\n╬{'═'*88}╬")
 
 def limpiar():  #función para limpiar la pantalla
     '''
-    Por medio del modulo os y subprocess de Python se invoca el comando de terminal 'clear' para Mac y 'cls' para Windows
+    Por medio de la librería os, se limpia la pantalla de la consola, dependiendo del sistema operativo que se esté usando se ejecuta un comando diferente.
     '''
-    if name == 'posix': #nombre que le da python a MacOS
-        # call('clear',shell=True) #opción #1 
-        system('clear') #opción #2 
+    if name == 'posix': #nombre que le da python a MacOS/UNIX
+        call('clear',shell=True) #opción #1 
+        # system('clear') #opción #2 
     else:
-        # call('cls',shell=True)
-        system('cls') 
+        call('cls',shell=True)
+        # system('cls') 
 
-def error_numerico(variable):   #función para mostrar error de entrada
-    print(f"\n{Color.RED}<<Entrada incorrecta>> [{variable}] no es un dato valido.{Color.RESET}")
-    salida()
-    
-def error_alfabetico():   #función para mostrar error de entrada
-    print(f"\n{Color.RED}<<Entrada incorrecta>> Ingrese un valor numérico. {Color.RESET}")
+def error(variable):   #función para mostrar error de entrada
+    '''
+    Se muestra un mensaje de error en caso de que el usuario ingrese un dato incorrecto, 
+    se divide en 3 tipos de datos: int, str y bool para mostrar el error correspondiente
+    '''
+    if type(variable) == int:   #si la variable es un entero
+        print(f"\n{Color.RED}<<Entrada incorrecta>> [{variable}] no es un dato valido.{Color.RESET}")
+    elif type(variable) == str: #si la variable es un string
+        print(f"\n{Color.RED}<<Entrada incorrecta>> [{variable}] no es un dato valido.{Color.RESET}")
+    elif not variable:  #cuando la variable da un ValueError
+        print(f"\n{Color.RED}<<Entrada incorrecta>> ingrese un dato valido.{Color.RESET}")
     salida()
         
 def salida():   #función para salir del programa
-    if name == 'posix':
-        bash = 'read -n 1 -s -r -p "\n<<<Presione una tecla para continuar>>>"' #no tengo ni puta idea por qué sirve esta mierda :U
-        system(bash)
-    else:
+    '''
+    Esta función se encarga de pausar la pantalla y obliga al usuario a presionar una tecla para continuar
+    '''
+    if name == 'posix': #nombre que le da python a MacOS/UNIX
+        call('/bin/bash -c \'read -n 1 -s -r -p "\n<<<Presione una tecla para continuar>>>"\'', shell=True) #no tengo ni puta idea por qué sirve esta mierda :U
+    else:   #opción para windows
         print('\n<<<Presione una tecla para continuar>>>')
-        system('pause')
+        call('pause',shell=True)
     # salir=input('\nDesea volver al modulo principal? Y/N      ')
         
 def pantalla(): #función para mostrar la pantalla principal
@@ -72,7 +93,7 @@ def adios():    #función para despedirse
                         #   ----"-"---     ADIOS    ---"-"----
     
     
-def organizar(dato):        #organiza los datos de manera que se vean mejor en pantalla
+def organizar(dato):        #organiza los datos de manera que se vean de manera ordenada
     for key,value in dato.items():
         print(f"\n{'_'*90}\n")
         print(f'Código: {key}')
@@ -87,32 +108,56 @@ def organizar(dato):        #organiza los datos de manera que se vean mejor en p
                 print(f"{'':>30}{key}: {value}")
     print(f"\n{'_'*90}\n")
 
+def Y_N():  #función para preguntar sí / no
+    '''
+    Ya que se repite el código para guardar los datos modificados,
+    se crea esta función para ahorrar espacio y tiempo.
+    '''
+    while True:
+        try:
+            global escoger_Y_N  #se declara la variable como global para que pueda ser usada en otras funciones
+            escoger_Y_N = None  #se declara la variable como None para que no se repita el valor anterior
+            escoger_Y_N = input('\nPor favor, escoja una opción: Sí(Y)/No(N)    ')
+            if escoger_Y_N == 'Y' or escoger_Y_N == 'y' or escoger_Y_N == 'N' or escoger_Y_N == 'n':
+                break
+            else:
+                error(escoger_Y_N)
+        except ValueError:
+            error(escoger_Y_N)
+                
 def materias(lista_de_materias):    #función para ingresar las materias del estudiante
     lista_de_materias.clear()
     while True:
         materias=input('\nDigite las materias del estudiante:   ')
-        c=input('\nDesea ingresar otras materias? Y/N   ')
-        if c == 'Y' or c == 'y':
-            lista_de_materias.append(materias)
-            continue
-        elif c =='N' or c == 'n':
-            lista_de_materias.append(materias)
+        lista_de_materias.append(materias)
+        print(f"\n Las materias registradas son: {lista_de_materias}.\n¿Desea incribir otras materias?")
+        Y_N()
+        if escoger_Y_N =='N' or escoger_Y_N == 'n':
             break
 
-def guardar_datos(modificar_datos,dato): #función para guardar los datos
-    while True:
-        try:
-            opcion = input('\nDesea dejar guardar este nuevo dato? Y/N    ')
-            if opcion == 'Y' or opcion == 'y':
-                datos.pop(modificar_datos)
-                datos.update(dato)
-                funcion_json.modificar(datos)
-                print('\n El dato fue modificado exitosamente')
-                break
-            else:
-                error_alfabetico(opcion)
-        except ValueError:
-            error_alfabetico(opcion)
+def guardar_datos(modificar_datos,dato): #función para guardar los datos modificados
+    '''
+    Ya que se repite el código para guardar los datos modificados,
+    se crea esta función para ahorrar espacio y tiempo.
+    '''
+    print('\nLos datos quedarán registrados de la siguiente manera, ¿Desea grabarlos así?')
+    Y_N()
+    if escoger_Y_N == 'Y' or escoger_Y_N == 'y':
+        datos.pop(modificar_datos)
+        datos.update(dato)
+        funcion_json.modificar(datos)
+        print('\n El dato fue modificado exitosamente')
+    else:
+        print('\n El dato no fue modificado')
+            
+'''
+╬════════════════════════════════════════════════════════════════════════════════════════╬
+╬                                                                                        ╬
+╬                    __________FUNCIONES PRINCIPALES__________                           ╬
+╬         Las cuatro funciones principales que definen la naturaleza del código          ╬
+╬                                                                                        ╬
+╬════════════════════════════════════════════════════════════════════════════════════════╬
+'''
 
 def opcion1():  #Añadir Registros
     limpiar()
@@ -122,17 +167,20 @@ def opcion1():  #Añadir Registros
         nombre=input('\nDigite el nombre del estudiante:    ')
         correo=input('\nDigite el correo institucional del estudiante:  ')
         materias(lista_de_materias)
-        activo=input('\nEl estudiantes se encuentra activo? Y/N     ')
-        bol=(activo=='Y')
-        datos={código:{'Nombre':nombre,'Correo':correo,'Materias':lista_de_materias, 'Activo':bol}}
+        promedio=float(input('\nDigite el promedio del estudiante:    '))
+        print('\nEl estudiantes se encuentra activo?')
+        Y_N()
+        bol=(escoger_Y_N=='Y' or escoger_Y_N=='y')
+        datos={código:{'Nombre':nombre,'Correo':correo,'Materias':lista_de_materias,'P.A.P.A':promedio ,'Activo':bol}}
         organizar(datos)       
-        c1=input('\nLos datos quedarán registrados de la siguiente manera, desea grabarlos así o modificarlos? Grabar(Y)/Devolver(N)     ')
-        if c1 == 'Y':
+        print('\nLos datos quedarán registrados de la siguiente manera, ¿Desea grabarlos así?')
+        Y_N()
+        if escoger_Y_N == 'Y' or escoger_Y_N == 'y':
             funcion_json.insertar(datos)
             print('\n Los datos han sido registrados de manera satisfactoria')    
             break
-        elif c1 == 'N':
-            continue
+        elif escoger_Y_N == 'N' or escoger_Y_N == 'n':
+            print('\n Los datos no han sido registrados')
     salida()
 
 def opcion2():  #Modifica Registros
@@ -142,19 +190,19 @@ def opcion2():  #Modifica Registros
     modificar_datos=input('\nEscriba el código del Estudiante a quien le desea modificar el registro:     ')
     dato = dict({modificar_datos:datos[modificar_datos]})
     organizar(dato)
-    opciones=['(1) - Código','(2) - Nombre', '(3) - Correo', '(4) - Materias', '(5) - Activo']
+    opciones=['(1) - Código','(2) - Nombre', '(3) - Correo', '(4) - Materias','(5) - P.A.P.A' ,'(6) - Activo', '(0) - Volver al menú principal']
     print('\nModificar:')
     for u in opciones:
         print(f"\n{'':>30}{u}")
     escoger = int(input('\nPor favor, escoja la opción que desea modificar del registro.   '))
     while True:
         try:
-            if 0 > escoger or escoger > 6:
-                error_numerico(escoger)
+            if escoger < 0 or escoger > 6:
+                error(escoger)
             else:
                 break
         except ValueError:
-            error_alfabetico()
+            error(escoger)
     if escoger == 1:
         nuevo_c = int(input('Digite el nuevo código del estudiante:     '))
         dato = dict({nuevo_c:datos[modificar_datos]})
@@ -176,11 +224,19 @@ def opcion2():  #Modifica Registros
         organizar(dato)
         guardar_datos(modificar_datos,dato)
     elif escoger == 5:
-        activo=input('\nEl estudiantes se encuentra activo? Y/N     ')
-        bol=(activo=='Y')
+        nuevo_p = float(input('\nDigite el nuevo promedio del estudiante:     '))
+        dato[modificar_datos]['P.A.P.A'] = nuevo_p
+        organizar(dato)
+        guardar_datos(modificar_datos,dato)
+    elif escoger == 6:
+        print('\nEl estudiantes se encuentra activo? Y/N     ')
+        Y_N()
+        bol=(escoger_Y_N=='Y' or escoger_Y_N=='y')
         dato[modificar_datos]['Activo'] = bol
         organizar(dato)
         guardar_datos(modificar_datos,dato)
+    elif escoger == 0:
+        print('\nNo se modificó ningún dato')
     salida()
 
 def opcion3():  #Consultar registros
@@ -188,33 +244,41 @@ def opcion3():  #Consultar registros
     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
     funcion_json.consultar(datos)
     opciones_consulta=['(1) - Todos los registros','(2) - Un solo registro']
-    print('\nConsultar:')
-    for u in opciones_consulta:
-        print(f"\n{'':>30}{u}")
-    while True:
-        try:
-            cantidad_datos = int(input("\nEscoge una opción:       "))
-            if cantidad_datos == 1:
-                dato=datos
-                organizar(dato)
-                break
-            elif cantidad_datos == 2:
-                while True:
-                    try:
-                        num_dato_cons = input("\nQué registro desea consultar?: ")
-                        if num_dato_cons:
-                            dato=dict({num_dato_cons:datos[num_dato_cons]})
-                            organizar(dato)
-                            break
-                        else:
-                            error_numerico(num_dato_cons)
-                    except KeyError:
-                        error_alfabetico()
-                break
-            else:
-                error_numerico(cantidad_datos)
-        except ValueError:
-            error_alfabetico()
+    if not datos:   #si no hay datos registrados
+        print('\nNo hay datos registrados')
+    else:   #si hay datos registrados se imprimen en pantalla con un ciclo for anidado para recorrer el diccionario de datos y sus valores
+        n_datos = len(datos)
+        if n_datos == 1:
+            print(f"\nHay {n_datos} registro en la base de datos de estudiantes")
+        else:
+            print(f"\nHay {n_datos} registros en la base de datos de estudiantes")
+        print('\nConsultar:')
+        for u in opciones_consulta:
+            print(f"\n{'':>30}{u}")
+        while True:
+            try:
+                cantidad_datos = int(input("\nEscoge una opción:       "))
+                if cantidad_datos == 1 or cantidad_datos == 2:
+                    break
+                else:
+                    error(cantidad_datos)
+            except ValueError:
+                error(cantidad_datos)
+        if cantidad_datos == 1:
+            dato=datos
+            organizar(dato)
+        elif cantidad_datos == 2:
+            while True:
+                try:
+                    num_dato_cons = input("\nQué registro desea consultar?: ")
+                    if num_dato_cons:
+                        dato=dict({num_dato_cons:datos[num_dato_cons]})
+                        organizar(dato)
+                        break
+                    else:
+                        error(num_dato_cons)
+                except KeyError:
+                    error(num_dato_cons)
     salida()
 
 def opcion4():  #Eliminar registros
@@ -223,27 +287,29 @@ def opcion4():  #Eliminar registros
     eliminar_datos = int(input('\nDesea eliminar todos los archivos (1), o eliminar uno solo (2)?     '))
     if eliminar_datos == 1:
         funcion_json.consultar(datos)
-        accion_e = input('Desea eliminar este dato? esta acción no se puede revertir. Y/N    ')
-        if accion_e == 'Y' or accion_e == 'y':  
+        print('¿Desea eliminar toda la base de datos? esta acción no se puede revertir.')
+        Y_N()
+        if escoger_Y_N == 'Y' or escoger_Y_N == 'y':  
             datos.clear()
             funcion_json.modificar(datos)
-            print('\nEl dato ha sido eliminado')
-            salida()
-        elif accion_e == 'N' or accion_e == 'n':
-            salida()
+            print('\nLa base de datos ha sido eliminado')
+        elif escoger_Y_N == 'N' or escoger_Y_N == 'n':
+            print('\nLa base de datos no ha sido eliminado')    
+        salida()
     elif eliminar_datos == 2:
         funcion_json.consultar(datos)
         eliminar = input('\nEscriba el código del registro que desea eliminar:      ')
         dato = dict({eliminar:datos[eliminar]})
         organizar(dato)
-        accion_e = input('Desea eliminar este dato? esta acción no se puede revertir. Y/N    ')
-        if accion_e == 'Y' or accion_e == 'y':
+        print('Desea eliminar este dato? esta acción no se puede revertir.')
+        Y_N()
+        if escoger_Y_N == 'Y' or escoger_Y_N == 'y':
             del(datos[eliminar])
             funcion_json.modificar(datos)
             print('\nEl dato ha sido eliminado')
-            salida()
-        elif accion_e == 'N' or accion_e == 'n':
-            salida()
+        elif escoger_Y_N == 'N' or escoger_Y_N == 'n':
+            print('\nEl dato no ha sido eliminado')
+        salida()
 
 if __name__ == "__main__":  #indica que el modulo no se ejecutará automáticamente a menos que sea llamado <funciones.funcion_que_se_llama()>
     main()
