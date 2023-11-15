@@ -1,13 +1,44 @@
 {
-  "12345": {
-    "Nombre": "Yamile Perdomo",
-    "Correo": "yaper@unal.edu.co",
+  "2": {
+    "Código": 89871234,
+    "Nombre": "Falcao Garcia",
+    "Correo": "faga@unal.edu.co",
     "Materias": [
-      "Sist\u00e9mico",
-      "Programaci\u00f3n",
-      "C\u00e1lculo",
-      "Introducci\u00f3n"
+      "Futbol",
+      "Colombia"
+    ],
+    "Activo": false
+  },
+  "3": {
+    "Código": 987654,
+    "Nombre": "Minuto de Dios",
+    "Correo": "midios@unal.edu.co",
+    "Materias": [
+      "Biblia",
+      "Limosna",
+      "Navidad"
     ],
     "Activo": true
+  },
+  "1": {
+    "Código": 1234123456,
+    "Nombre": "Juan Valjuan",
+    "Correo": "juva@unal.edu.co",
+    "Materias": [
+      "Pensamiento Sistémico",
+      "Introducción a la Ingeniería",
+      "Programación de Computadores",
+      "Cálculo Diferencial"
+    ],
+    "Activo": true
+  },
+  "4": {
+    "Código": 12341234,
+    "Nombre": "sdfasdfasd",
+    "Correo": "adfsafa@unal.edu.co",
+    "Materias": [
+      "asdfadsf"
+    ],
+    "Activo": false
   }
 }
