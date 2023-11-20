@@ -1,44 +1,77 @@
 {
-  "2": {
-    "Código": 89871234,
-    "Nombre": "Falcao Garcia",
-    "Correo": "faga@unal.edu.co",
+  "0001": {
+    "Código": 97623459762345672345,
+    "Nombre": "Pedro Escamosa Vives",
+    "Correo": "pedroesc@unal.edu.co",
     "Materias": [
-      "Futbol",
-      "Colombia"
-    ],
-    "Activo": false
-  },
-  "3": {
-    "Código": 987654,
-    "Nombre": "Minuto de Dios",
-    "Correo": "midios@unal.edu.co",
-    "Materias": [
-      "Biblia",
-      "Limosna",
-      "Navidad"
+      "Vallenato",
+      "La Costa Caribe"
     ],
     "Activo": true
   },
-  "1": {
-    "Código": 1234123456,
-    "Nombre": "Juan Valjuan",
-    "Correo": "juva@unal.edu.co",
+  "0002": {
+    "Código": 274365923465762345,
+    "Nombre": "Radamel Falcao Garcia",
+    "Correo": "el_tigre@unal.edu.co",
+    "Materias": [
+      "Futbol",
+      "COlombia",
+      "Goles"
+    ],
+    "Activo": false
+  },
+  "0003": {
+    "Código": 24365826542,
+    "Nombre": "Camilo Torres",
+    "Correo": "camilo@unal.edu.co",
+    "Materias": [
+      "Pensamiento Sistemico",
+      "Programación de Computadores"
+    ],
+    "Activo": true
+  },
+  "0004": {
+    "Código": 123412341234,
+    "Nombre": "Juni Omino",
+    "Correo": "Juano@unal.edu.co",
+    "Materias": [
+      "Pensamiento Insistémico",
+      "Programación de empanadas",
+      ""
+    ],
+    "Activo": true
+  },
+  "0005": {
+    "Código": 76623459,
+    "Nombre": "Emma Michi",
+    "Correo": "emmichi@unal.edu.co",
     "Materias": [
       "Pensamiento Sistémico",
-      "Introducción a la Ingeniería",
       "Programación de Computadores",
       "Cálculo Diferencial"
     ],
     "Activo": true
   },
-  "4": {
-    "Código": 12341234,
-    "Nombre": "sdfasdfasd",
-    "Correo": "adfsafa@unal.edu.co",
+  "0006": {
+    "Código": 997691364124,
+    "Nombre": "Pepito Perez",
+    "Correo": "pepez@unal.edu.co",
     "Materias": [
-      "asdfadsf"
+      "Pensamiento Insitémico",
+      "Aguatero",
+      "Ola ke Ase"
     ],
-    "Activo": false
+    "Activo": true
+  },
+  "0007": {
+    "Código": 139764917364,
+    "Nombre": "Home Avemaria Home",
+    "Correo": "home@unal.edu.co",
+    "Materias": [
+      "Pensamiento Sistémico",
+      "Programación de Computadores",
+      "Cálculo Diferencial"
+    ],
+    "Activo": true
   }
 }
