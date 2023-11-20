@@ -2,7 +2,7 @@ import funcion_json     #se llama al modulo funcion_json.py
 from color import Color     #se llama al modulo color.py
 from os import name     #se llama al modulo os para conocer el nombre del os que se está usando
 from subprocess import call     #se llama al modulo subprocess, más rápido que os.system()
-import re     #se llama al modulo re para usar expresiones regulares
+from re import compile, match 
 '''
 ╬════════════════════════════════════════════════════════════════════════════════════════╬
 ╬                                                                                        ╬
@@ -13,7 +13,7 @@ import re     #se llama al modulo re para usar expresiones regulares
 '''
 datos={}    #diccionario para almacenar los datos del estudiante
 lista_de_materias = []  #lista para almacenar las materias del estudiante
-correo=re.compile("^[a-zA-Z0-9_]+@{1}+unal.edu.co{1}$")     #expresión regular con el fin de validar el correo institucional del estudiante
+correo = compile("^[a-zA-Z0-9_]+@unal\.edu\.co$")    #expresión regular con el fin de validar el correo institucional del estudiante
 
 '''
 ╬════════════════════════════════════════════════════════════════════════════════════════╬
@@ -32,11 +32,9 @@ def limpiar():  #función para limpiar la pantalla
     Por medio de la librería os, se limpia la pantalla de la consola, dependiendo del sistema operativo que se esté usando se ejecuta un comando diferente.
     '''
     if name == 'posix': #nombre que le da python a MacOS/UNIX
-        call('clear',shell=True) #opción #1 
-        # system('clear') #opción #2 
+        call('clear',shell=True)
     else:
         call('cls',shell=True)
-        # system('cls') 
 
 def error(variable):   #función para mostrar error de entrada
     '''
@@ -57,6 +55,7 @@ def salida():   #función para salir del programa
     '''
     if name == 'posix': #nombre que le da python a MacOS/UNIX
         call('/bin/bash -c \'read -n 1 -s -r -p "\n<<<Presione una tecla para continuar>>>"\'', shell=True) #no tengo ni puta idea por qué sirve esta mierda :U
+        print()
         #call('/bin/zsh -c \'read "?\n<<<Presione una tecla para continuar>>>"\'', shell=True)  #opción para zsh pero no sirve
         '''
         comandos utilizados de la terminal bash:
@@ -118,6 +117,41 @@ def organizar(dato):        #organiza los datos de manera que se vean de manera 
                 print(f"{'':>15}{key}: {value}")
     print(f"\n{'_'*90}\n")
 
+def input_alfabetico(): #función para ingresar datos alfabéticos
+    '''
+    Ya que se repite el código para ingresar datos alfabéticos,
+    se crea esta función para ahorrar espacio y tiempo.
+    '''
+    while True:
+        try:
+            global palabra
+            palabra = None #se declara la variable como None para que no se repita el valor anterior
+            palabra = input(f"\n{'':>10}Ingrese el dato:    ")
+            if palabra:  #si el dato es alfabético
+                break   
+        except ValueError:
+            error(palabra)
+        finally:
+            pass
+
+def input_numerico():   #función para ingresar datos numéricos
+    '''
+    Lo mismo que la función anterior pero para datos numéricos
+    '''
+    while True:
+        try:
+            global número
+            número = None
+            número = int(input(f"\n{'':>10}Ingrese el dato:    "))
+            if número >= 0: #si el dato es numérico
+                break
+            else:
+                error(número)
+        except ValueError:
+            error(número)
+        finally:
+            pass
+
 def Y_N():  #función para preguntar sí / no
     '''
     Ya que se repite el código para guardar los datos modificados,
@@ -134,11 +168,16 @@ def Y_N():  #función para preguntar sí / no
                 error(escoger_Y_N)
         except ValueError:
             error(escoger_Y_N)
+        finally:
+            pass
                 
 def materias(lista_de_materias):    #función para ingresar las materias del estudiante
     lista_de_materias.clear()
     while True:
-        materias=input('\nDigite las materias del estudiante:   ')
+        print('\nDigite las materias del estudiante:   ')
+        materias=None
+        input_alfabetico()
+        materias=palabra
         lista_de_materias.append(materias)
         print(f"\n Las materias registradas son: {lista_de_materias}.\n¿Desea incribir otras materias?")
         Y_N()
@@ -155,8 +194,10 @@ def guardar_datos(modificar_datos,dato): #función para guardar los datos modifi
     if escoger_Y_N == 'Y' or escoger_Y_N == 'y':
         datos.pop(modificar_datos)
         datos.update(dato)
-        funcion_json.modificar(datos)
+        datos_m=dict(sorted(datos.items()))
+        funcion_json.modificar(datos_m)
         print('\n El dato fue modificado exitosamente')
+        datos.clear()
     else:
         print('\n El dato no fue modificado')
 
@@ -173,15 +214,24 @@ def opcion1():  #Añadir Registros
     limpiar()
     while True:
         funcion_json.consultar(datos)
-        if len(datos) == 0:
-            registro=1
+        r = len(datos)
+        if r == 0:
+            registro="0001"
         else:
-            registro=len(datos)+1
+            registro="0"*(4-len(str(r)))+str(r+1)
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Ingreso de Registro':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
-        código=int(input('\nDigite el código del estudiante:    '))
-        nombre=input('\nDigite el nombre del estudiante:    ')
+        print(f"{' '*20}Registro de estudiante # {registro}")
+        print('\nIngrese el código del estudiante:')
+        input_numerico()
+        código=número
+        print('\nIngrese el nombre del estudiante:')
+        input_alfabetico()
+        nombre=palabra
+        print('\nIngrese el correo del estudiante:')
         while True:
-            correo_i=input('\nDigite el correo institucional del estudiante:  ')
+            correo_i=None
+            input_alfabetico()
+            correo_i=palabra
             if correo.match(correo_i):
                 break
             else:
@@ -218,7 +268,10 @@ def opcion2():  #Modifica Registros
         else:
             print(f"\nHay {n_datos} registros en la base de datos de estudiantes")
     while True:
-        modificar_datos=input('\nEscriba el Registro del Estudiante a quien le desea modificar el registro:     ')
+        print('\nIngrese el número de registro que desea modificar:')
+        modificar_datos=None
+        input_alfabetico()
+        modificar_datos=palabra
         if modificar_datos:
             break
         else:
@@ -230,35 +283,51 @@ def opcion2():  #Modifica Registros
     for u in opciones:
         print(f"\n{'':>30}{u}")
     while True:
-        escoger = int(input('\nPor favor, escoja la opción que desea modificar del registro.   '))
-        try:
-            if escoger < 0 or escoger > 5:
+        print('\nEscoja una opción:')
+        escoger = None
+        input_numerico()
+        escoger = número
+        if escoger < 0 or escoger > 5:
                 error(escoger)
-            else:
-                break
-        except ValueError:
-            error(escoger)
+        else:
+            break
     if escoger == 1:
-        nuevo_c = int(input('Digite el nuevo código del estudiante:     '))
+        nuevo_c = None
+        print('\nIngrese el nuevo código del estudiante:')
+        input_numerico()
+        nuevo_c = número
         dato[modificar_datos]['Código'] = nuevo_c
         organizar(dato)
         guardar_datos(modificar_datos,dato)
     elif escoger == 2:
-        nuevo_n = input('\nDigite el nuevo nombre del estudiante:     ')
+        print('\nDigite el nuevo nombre del estudiante:')
+        nuevo_n=None
+        input_alfabetico()
+        nuevo_n = palabra 
         dato[modificar_datos]['Nombre'] = nuevo_n
         organizar(dato)
         guardar_datos(modificar_datos,dato)
     elif escoger == 3:
-        nuevo_co = input ('\nDigite el nuevo correo del estudiante:     ')
-        dato[modificar_datos]['Correo'] = nuevo_co
-        organizar(dato)
-        guardar_datos(modificar_datos,dato)
+        print('\nDigite el nuevo correo del estudiante:     ')
+        nuevo_co=None
+        while True:
+            nuevo_co=None
+            input_alfabetico()
+            nuevo_co=palabra
+            if correo.match(nuevo_co):
+                dato[modificar_datos]['Correo'] = nuevo_co
+                organizar(dato)
+                guardar_datos(modificar_datos,dato)
+                break
+            else:
+                print(f"\n{Color.RED}<<Entrada incorrecta>> [{nuevo_co}] no obedece el dominio @unal.edu.co.{Color.RESET}")
+                error(nuevo_co)
     elif escoger == 4:
         materias(lista_de_materias)
         dato[modificar_datos]['Materias'] = lista_de_materias
         organizar(dato)
         guardar_datos(modificar_datos,dato)
-    elif escoger == 6:
+    elif escoger == 5:
         print('\nEl estudiantes se encuentra activo? Y/N     ')
         Y_N()
         bol=(escoger_Y_N=='Y' or escoger_Y_N=='y')
@@ -286,21 +355,24 @@ def opcion3():  #Consultar registros
         for u in opciones_consulta:
             print(f"\n{'':>30}{u}")
         while True:
-            try:
-                cantidad_datos = int(input("\nEscoge una opción:       "))
+                print("\nEscoge una opción:") 
+                cantidad_datos = None
+                input_numerico()
+                cantidad_datos = número
                 if cantidad_datos == 1 or cantidad_datos == 2:
                     break
                 else:
                     error(cantidad_datos)
-            except ValueError:
-                error(cantidad_datos)
         if cantidad_datos == 1:
             dato=datos
             organizar(dato)
         elif cantidad_datos == 2:
             while True:
                 try:
-                    num_dato_cons = input("\nQué registro desea consultar?: ")
+                    print("\nQué registro desea consultar?: ")
+                    num_dato_cons=None
+                    input_alfabetico()
+                    num_dato_cons=palabra
                     if num_dato_cons:
                         dato=dict({num_dato_cons:datos[num_dato_cons]})
                         organizar(dato)
@@ -309,6 +381,8 @@ def opcion3():  #Consultar registros
                         error(num_dato_cons)
                 except KeyError:
                     error(num_dato_cons)
+                finally:
+                    pass
     salida()
 
 def opcion4():  #Eliminar registros
@@ -335,7 +409,12 @@ def opcion4():  #Eliminar registros
         Y_N()
         if escoger_Y_N == 'Y' or escoger_Y_N == 'y':
             del(datos[eliminar])
-            funcion_json.modificar(datos)
+            nuevos_ordenados = {}
+            for i in datos.values():
+                nuevos_ordenados.update({('0'*(4-len(str(len(datos))))+str(len(nuevos_ordenados)+1)):i})
+            funcion_json.modificar(nuevos_ordenados)
+            nuevos_ordenados.clear()
+            datos.clear()
             print('\nEl dato ha sido eliminado')
         elif escoger_Y_N == 'N' or escoger_Y_N == 'n':
             print('\nEl dato no ha sido eliminado')
