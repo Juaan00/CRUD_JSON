@@ -1,4 +1,4 @@
-import funciones    #se llaman al modulo funciones.py
+import funciones
 '''
 ╬════════════════════════════════════════════════════════════════════════════════════════╬
 ╬                                                                                        ╬
@@ -12,7 +12,7 @@ INTEGRANTES GRUPO [22]:
 - Jorley Snehider Salas Rocha
 - Juan Felipe Quiroga Medina
 
-El proyecto se divide en 4 archivos:
+El proyecto se divide en 5 archivos:
 
 (1) - registro.py -> inicia el código. 
 (2) - funciones.py -> ejecuta las funciones principales del proyecto.
@@ -21,15 +21,13 @@ El proyecto se divide en 4 archivos:
 (5) - datos.json -> Donde se almacenan los datos.
 
 '''
-while True:  #Se crea un ciclo infinito para que el programa se ejecute hasta que el usuario lo decida
-    funciones.pantalla()
-    try:
-        entrada_usuario=None
-        entrada_usuario=int(input(f"\n{'(╯°□°）╯ ┻━┻ Escoja una opción:       ':>45}"))     #se pide la entrada al usuario 
-        if entrada_usuario == 0:
-            funciones.adios()
-            break
-        elif entrada_usuario == 1:
+def programa_registro():    
+    while True:
+        funciones.pantalla()
+        print(f"\n{'(╯°□°）╯ ┻━┻ Escoja una opción:       ':>45}")
+        funciones.input_numerico()
+        entrada_usuario=funciones.número
+        if entrada_usuario == 1:
             funciones.opcion1()
         elif entrada_usuario == 2:
             funciones.opcion2()
@@ -37,7 +35,10 @@ while True:  #Se crea un ciclo infinito para que el programa se ejecute hasta qu
             funciones.opcion3()
         elif entrada_usuario == 4:
             funciones.opcion4()
+        elif entrada_usuario == 0:
+            funciones.adios()
+            break
         else:
             funciones.error(entrada_usuario)
-    except ValueError:
-        funciones.error(entrada_usuario)
+if __name__ == "__main__":
+    programa_registro()
