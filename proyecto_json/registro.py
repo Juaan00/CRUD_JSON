@@ -8,7 +8,6 @@ import funciones
 
 INTEGRANTES GRUPO [22]:
 - Simón Velásquez Silva
-- Julián David nieto Rodríguez
 - Jorley Snehider Salas Rocha
 - Juan Felipe Quiroga Medina
 
@@ -19,12 +18,11 @@ El proyecto se divide en 5 archivos:
 (3) - funcion_json.py -> se encarga de grabar y extraer la información del archivo JSON.
 (4) - color.py -> se encarga de darle color al texto que se imprime en la consola. (No es necesario para el funcionamiento del programa)
 (5) - datos.json -> Donde se almacenan los datos.
-
 '''
-def programa_registro():    
+def programa_registro():
+    funciones.cambiar_tamaño_terminal()    
     while True:
         funciones.pantalla()
-        print(f"\n{'(╯°□°）╯ ┻━┻ Escoja una opción:       ':>45}")
         funciones.input_numerico()
         entrada_usuario=funciones.número
         if entrada_usuario == 1:
