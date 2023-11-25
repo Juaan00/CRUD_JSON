@@ -1,76 +1,458 @@
 {
   "0001": {
-    "Código": 97623459762345672345,
-    "Nombre": "Pedro Escamosa Vives",
-    "Correo": "pedroesc@unal.edu.co",
+    "Código": 3412345435,
+    "Nombre": "Javier Milei",
+    "Correo": "jami_viva_la_libertad@unal.edu.co",
     "Materias": [
-      "Vallenato",
-      "La Costa Caribe"
+      "Economía Básica",
+      "Historia de Argentina",
+      "Cómo manejar un país?",
+      "Ser un libertonto",
+      "El presi"
     ],
     "Activo": true
   },
   "0002": {
-    "Código": 274365923465762345,
-    "Nombre": "Radamel Falcao Garcia",
-    "Correo": "el_tigre@unal.edu.co",
+    "Código": 871234561234124,
+    "Nombre": "Gabriel Boric",
+    "Correo": "gabo@unal.edu.co",
     "Materias": [
-      "Futbol",
-      "COlombia",
-      "Goles"
-    ],
-    "Activo": false
-  },
-  "0003": {
-    "Código": 24365826542,
-    "Nombre": "Camilo Torres",
-    "Correo": "camilo@unal.edu.co",
-    "Materias": [
-      "Pensamiento Sistemico",
+      "Pensamiento Sistémico",
+      "Catedra de Taylor Swift",
       "Programación de Computadores"
     ],
     "Activo": true
   },
-  "0004": {
-    "Código": 123412341234,
-    "Nombre": "Juni Omino",
-    "Correo": "Juano@unal.edu.co",
+  "0003": {
+    "Código": 746562243,
+    "Nombre": "Jhon Legends",
+    "Correo": "jole@unal.edu.co",
     "Materias": [
-      "Pensamiento Insistémico",
-      "Programación de empanadas",
-      ""
+      "Introducción a la Ingeniería",
+      "Armonía Avanzada"
     ],
     "Activo": true
   },
-  "0005": {
-    "Código": 76623459,
-    "Nombre": "Emma Michi",
-    "Correo": "emmichi@unal.edu.co",
+  "0004": {
+    "Código": 1234,
+    "Nombre": "Taylor Swift",
+    "Correo": "dios@unal.edu.co",
     "Materias": [
-      "Pensamiento Sistémico",
+      "El evangelio según 1989",
       "Programación de Computadores",
-      "Cálculo Diferencial"
+      "Midnights"
+    ],
+    "Activo": false
+  },
+  "0005": {
+    "Código": 2341341,
+    "Nombre": "Bruno Mars",
+    "Correo": "bruma@unal.edu.co",
+    "Materias": [
+      "Introducción a la Ingeniería",
+      "24K MAGIC",
+      "One direction",
+      "Programación de Computadores"
     ],
     "Activo": true
   },
   "0006": {
-    "Código": 997691364124,
-    "Nombre": "Pepito Perez",
-    "Correo": "pepez@unal.edu.co",
+    "Código": 1324712346,
+    "Nombre": "The Lord Weekend",
+    "Correo": "i_feel_it_coming@unal.edu.co",
     "Materias": [
-      "Pensamiento Insitémico",
-      "Aguatero",
-      "Ola ke Ase"
+      "Álgebra Lineal",
+      "Programación de Computadores",
+      "Cálculo Diferencia"
     ],
     "Activo": true
   },
   "0007": {
-    "Código": 139764917364,
-    "Nombre": "Home Avemaria Home",
-    "Correo": "home@unal.edu.co",
+    "Código": 1234223434,
+    "Nombre": "Harry Styles",
+    "Correo": "hasy@unal.edu.co",
+    "Materias": [
+      "Programación de Computadores",
+      "Introducción a la Ingeniería",
+      "Cálculo Diferencial"
+    ],
+    "Activo": true
+  },
+  "0008": {
+    "Código": 132443424,
+    "Nombre": "Julio Agosto",
+    "Correo": "jugos@unal.edu.co",
+    "Materias": [
+      "Imperio Romano",
+      "Todos los Caminos llevan a Roma",
+      "Practica del Emperador"
+    ],
+    "Activo": true
+  },
+  "0009": {
+    "Código": 134123,
+    "Nombre": "Nomino Nomino",
+    "Correo": "nono@unal.edu.co",
     "Materias": [
       "Pensamiento Sistémico",
+      "Programación de Computadores"
+    ],
+    "Activo": true
+  },
+  "0010": {
+    "Código": 76572992,
+    "Nombre": "Rafael Robayo",
+    "Correo": "rabo@unal.edu.co",
+    "Materias": [
       "Programación de Computadores",
+      "Catedra de Inducción"
+    ],
+    "Activo": false
+  },
+  "0011": {
+    "Código": 98234,
+    "Nombre": "Mohamed Salah",
+    "Correo": "mosalah@unal.edu.co",
+    "Materias": [
+      "Pensamiento Sistémico",
+      "Rey de Egipto",
+      "Programación de Computadores"
+    ],
+    "Activo": true
+  },
+  "0012": {
+    "Código": 762347476,
+    "Nombre": "Luis Fernando Diaz",
+    "Correo": "lucho_god@unal.edu.co",
+    "Materias": [
+      "",
+      "",
+      "Colombia",
+      "Introducción a la Ingeniería"
+    ],
+    "Activo": true
+  },
+  "0013": {
+    "Código": 66664,
+    "Nombre": "Bolillo Gomez",
+    "Correo": "bogo@unal.edu.co",
+    "Materias": [
+      "",
+      "Golpe Certeros",
+      "Programación de Computadores"
+    ],
+    "Activo": true
+  },
+  "0014": {
+    "Código": 23416,
+    "Nombre": "Hola que hace",
+    "Correo": "hola@unal.edu.co",
+    "Materias": [
+      "Pensamiento Sistémico",
+      "Introducción a la Ingeniería",
+      "Cálculo ",
+      "Programación de Computadores"
+    ],
+    "Activo": false
+  },
+  "0015": {
+    "Código": 2134644,
+    "Nombre": "Jesus Bendito",
+    "Correo": "ywhch@unal.edu.co",
+    "Materias": [
+      "Milagros de los Gods",
+      "Programación Orientada a Objetos"
+    ],
+    "Activo": false
+  },
+  "0016": {
+    "Código": 643535,
+    "Nombre": "El Fuicioso",
+    "Correo": "fuicio@unal.edu.co",
+    "Materias": [
+      "Programación de Computadores",
+      "Introducción a la Ingeniería"
+    ],
+    "Activo": false
+  },
+  "0017": {
+    "Código": 8763425,
+    "Nombre": "Joe Arroyo",
+    "Correo": "joe@unal.edu.co",
+    "Materias": [
+      "Salsa",
+      "Pensamiento Sistémico",
+      "En los años mil seicientos"
+    ],
+    "Activo": false
+  },
+  "0018": {
+    "Código": 265235,
+    "Nombre": "Pepito Perez",
+    "Correo": "pepe@unal.edu.co",
+    "Materias": [
+      "Programación",
+      "Pensamiento sistémico",
+      "Introducción a la Ingeniería",
+      "Cálculo 3"
+    ],
+    "Activo": true
+  },
+  "0019": {
+    "Código": 872345,
+    "Nombre": "Che Guevara",
+    "Correo": "mamerto@unal.edu.co",
+    "Materias": [
+      "Tirar Piedra",
+      "Mamerto God"
+    ],
+    "Activo": false
+  },
+  "0020": {
+    "Código": 987234542,
+    "Nombre": "Máximo Decimo meridio",
+    "Correo": "maximo@unal.edu.co",
+    "Materias": [
+      "ROma",
+      "Matar a comodo"
+    ],
+    "Activo": false
+  },
+  "0021": {
+    "Código": 8762345,
+    "Nombre": "Desmos Vensim",
+    "Correo": "deven@unal.edu.co",
+    "Materias": [
+      "Vision of Division",
+      "Como poder modelar un hpta modelo",
+      "Pongan Tusa"
+    ],
+    "Activo": false
+  },
+  "0022": {
+    "Código": 16341234,
+    "Nombre": "Juan Fernando Quintero",
+    "Correo": "juanfequi@unal.edu.co",
+    "Materias": [
+      "Introducción a la Ingeniería"
+    ],
+    "Activo": true
+  },
+  "0023": {
+    "Código": 241234,
+    "Nombre": "Juan Dinero",
+    "Correo": "juandi@unal.edu.co",
+    "Materias": [
+      "Pensamientto Sistémico",
+      "Algoritmos Avanzados"
+    ],
+    "Activo": true
+  },
+  "0024": {
+    "Código": 123412,
+    "Nombre": "Jun Jun",
+    "Correo": "juju@unal.edu.co",
+    "Materias": [
+      "Pensamiento Sistémico",
+      "kjasdhfadf",
+      "dsafasfa"
+    ],
+    "Activo": false
+  },
+  "0025": {
+    "Código": 13241234,
+    "Nombre": "Kakashi Hatake",
+    "Correo": "kakahata@unal.edu.co",
+    "Materias": [
+      "Introducción a la Ingeniería",
+      "Rokudaime Hokage",
+      "Programación de Computadores"
+    ],
+    "Activo": true
+  },
+  "0026": {
+    "Código": 7651234,
+    "Nombre": "Naruto Uzumaki",
+    "Correo": "nanadaime@unal.edu.co",
+    "Materias": [
+      "Nanadaime Hokage",
+      "Programación de Computadores",
+      "Comer mucho Ramen"
+    ],
+    "Activo": true
+  },
+  "0027": {
+    "Código": 124134,
+    "Nombre": "Pepito Perez",
+    "Correo": "pepe@unal.edu.co",
+    "Materias": [
+      "Programación para Computadores"
+    ],
+    "Activo": false
+  },
+  "0028": {
+    "Código": 132413,
+    "Nombre": "Winona Rider",
+    "Correo": "wini@unal.edu.co",
+    "Materias": [
+      "Programación de Computadores",
+      "Pensamiento Sistémico"
+    ],
+    "Activo": true
+  },
+  "0029": {
+    "Código": 76425566,
+    "Nombre": "Hugo Ospina",
+    "Correo": "hugo_boss@unal.edu.co",
+    "Materias": [
+      "Desocupado provocador de paros",
+      "Pensamiento Sistémico",
+      "El ser más pendejo de este platanal"
+    ],
+    "Activo": true
+  },
+  "0030": {
+    "Código": 13414,
+    "Nombre": "Matt Helders",
+    "Correo": "matt@unal.edu.co",
+    "Materias": [
+      "Pensamiento Sistemico",
+      "Introducción a la Ingeniería"
+    ],
+    "Activo": true
+  },
+  "0031": {
+    "Código": 2134565,
+    "Nombre": "Alberto Manzanero",
+    "Correo": "alma@unal.edu.co",
+    "Materias": [
+      "Contigo Aprendí",
+      "Yo me Quedo"
+    ],
+    "Activo": true
+  },
+  "0032": {
+    "Código": 3124555,
+    "Nombre": "Dos más Uno",
+    "Correo": "dos_uno@unal.edu.co",
+    "Materias": [
+      "Pensamiento Sistémico",
+      "Introducción a la Ingeniería",
       "Cálculo Diferencial"
+    ],
+    "Activo": true
+  },
+  "0033": {
+    "Código": 8766555364,
+    "Nombre": "Fefe Boti",
+    "Correo": "febo@unal.edu.co",
+    "Materias": [
+      "Pensamiento Sistémico",
+      "Introducción ",
+      "Bajista de Dos mas Uno"
+    ],
+    "Activo": true
+  },
+  "0034": {
+    "Código": 213784623,
+    "Nombre": "Pedro Aznar",
+    "Correo": "peaz@unal.edu.co",
+    "Materias": [
+      "Maria Lando",
+      "Bajista de los Buenos",
+      "Introducción a la Ingeniería"
+    ],
+    "Activo": true
+  },
+  "0035": {
+    "Código": 32342234,
+    "Nombre": "Fito Paez",
+    "Correo": "fipa@unal.edu.co",
+    "Materias": [
+      "Detrás del Muro de los lamentos",
+      "Maria Lando",
+      "Cantos sagrados de la selva argentina"
+    ],
+    "Activo": false
+  },
+  "0036": {
+    "Código": 3141244,
+    "Nombre": "Matt Belamy",
+    "Correo": "mat_muse@unal.edu.co",
+    "Materias": [
+      "Exo Politics",
+      "Knights of Cydonia",
+      "Sunburn",
+      "Blackout"
+    ],
+    "Activo": true
+  },
+  "0037": {
+    "Código": 768321764,
+    "Nombre": "Roy Barreras",
+    "Correo": "roy_ba@unal.edu.co",
+    "Materias": [
+      "Control Político",
+      "Manejar un País como los cracks",
+      "ADCarry del Pacto"
+    ],
+    "Activo": false
+  },
+  "0038": {
+    "Código": 1234124,
+    "Nombre": "Years and Years",
+    "Correo": "year_year@unal.edu.co",
+    "Materias": [
+      "Desire",
+      "King",
+      "Shine"
+    ],
+    "Activo": true
+  },
+  "0039": {
+    "Código": 123444444,
+    "Nombre": "Troya Silvan",
+    "Correo": "trosil@unal.edu.co",
+    "Materias": [
+      "Pop",
+      "GUTS",
+      "LGBTQ"
+    ],
+    "Activo": true
+  },
+  "0040": {
+    "Código": 8887754,
+    "Nombre": "Olvia Rodrigo",
+    "Correo": "olro@unal.edu.co",
+    "Materias": [
+      "GUTS",
+      "Vampire",
+      "Brutal",
+      "Traitor"
+    ],
+    "Activo": true
+  },
+  "0041": {
+    "Código": 123123123,
+    "Nombre": "Antonio Arnedo",
+    "Correo": "anto_arne@unal.edu.co",
+    "Materias": [
+      "Música Colombiana",
+      "Armonía Jazz",
+      "Fiesta de Corralitos",
+      "Bembé"
+    ],
+    "Activo": false
+  },
+  "0042": {
+    "Código": 78648652,
+    "Nombre": "Bruno Mars",
+    "Correo": "bruno_marte@unal.edu.co",
+    "Materias": [
+      "Tresaure",
+      "Looked Up on Heaven",
+      "24K MAGIC",
+      "Thats what I Like"
     ],
     "Activo": true
   }
