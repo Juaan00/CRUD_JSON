@@ -1,4 +1,4 @@
-import json     #Se importa la librería JSON
+from json import load, dump     #Se importa la librería JSON
 '''
 ╬════════════════════════════════════════════════════════════════════════════════════════╬
 ╬                                                                                        ╬
@@ -13,19 +13,19 @@ def main(): #Función principal
 
 def insertar(datos):    #Función que inserta los datos en el JSON
     with open("datos.json", encoding='utf-8') as registro_previo:
-        datos_estudiante = json.load(registro_previo)
+        datos_estudiante = load(registro_previo)
         datos_estudiante.update(datos)
     with open("datos.json", "w", encoding='utf-8') as dato_agregado:
-        json.dump(datos_estudiante, dato_agregado, indent=2, ensure_ascii=False)
+        dump(datos_estudiante, dato_agregado, indent=2, ensure_ascii=False)
         
 def consultar(datos):   #Función que consulta los datos del JSON
     with open("datos.json", 'r', encoding='utf-8') as registro_previo:
-        datos_estudiante = json.load(registro_previo)
+        datos_estudiante = load(registro_previo)
         datos.update(datos_estudiante)
 
 def modificar(datos_m):   #Función que modifica los datos del JSON
     with open("datos.json", 'w', encoding='utf-8') as registro_previo:
-        json.dump(datos_m,registro_previo, indent=2, ensure_ascii=False)
+        dump(datos_m,registro_previo, indent=2, ensure_ascii=False)
         
 if __name__ == "__main__":  #Se ejecuta la función principal
     main()
