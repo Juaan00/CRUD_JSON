@@ -21,7 +21,6 @@ El proyecto se divide en 5 archivos:
 (5) - datos.json -> Donde se almacenan los datos.
 '''
 def programa_registro():
-    funciones.cambiar_tamaño_terminal()    #NO USAR SI VA A EJECTUAR EL PROGRAMA EN LA TERMINAL DE VISUAL STUDIO CODE, SOLO PARA TERMINAL DE WINDOWS/LINUX
     while True:
         funciones.pantalla()
         funciones.input_numerico()
