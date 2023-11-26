@@ -40,16 +40,6 @@ materias_re = compile("[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s]+$")
 def main():  #función principal
     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.CYAN}{Color.BOLD}{'Modulo funciones, este archivo no se ejecutará directamente':>78}{Color.RESET}{'╬':>11}\n╬{'╬':>89}\n╬{'═'*88}╬")
 
-def cambiar_tamaño_terminal():
-    '''
-    Si el sistema operaivo es windows o LINUX, se cambia el tamaño de la terminal. MacOS no tiene esta opción.
-    '''
-    if system() == 'Windows':   #opción para windows
-        return run(f'mode con: cols={110} lines={60}', shell=True)
-    elif system() == 'Linux':   #opción para linux
-        return run(['resize', '-s', str(110), str(60)])
-    else:   #opción para MacOS :C maldito seas Steve Jobs
-        return None
 
 def limpiar():  #función para limpiar la pantalla
     '''
