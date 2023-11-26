@@ -20,7 +20,7 @@ El proyecto se divide en 5 archivos:
 (5) - datos.json -> Donde se almacenan los datos.
 '''
 def programa_registro():
-    funciones.cambiar_tamaño_terminal()    
+    #funciones.cambiar_tamaño_terminal()    
     while True:
         funciones.pantalla()
         funciones.input_numerico()
