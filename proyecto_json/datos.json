@@ -13,13 +13,14 @@
     "Activo": true
   },
   "0002": {
-    "Código": 871234561234124,
+    "Código": 12312313,
     "Nombre": "Gabriel Boric",
     "Correo": "gabo@unal.edu.co",
     "Materias": [
       "Pensamiento Sistémico",
       "Catedra de Taylor Swift",
-      "Programación de Computadores"
+      "Programación de Computadores",
+      "Electiva 1"
     ],
     "Activo": true
   },
@@ -57,17 +58,6 @@
     "Activo": true
   },
   "0006": {
-    "Código": 1324712346,
-    "Nombre": "The Lord Weekend",
-    "Correo": "i_feel_it_coming@unal.edu.co",
-    "Materias": [
-      "Álgebra Lineal",
-      "Programación de Computadores",
-      "Cálculo Diferencia"
-    ],
-    "Activo": true
-  },
-  "0007": {
     "Código": 1234223434,
     "Nombre": "Harry Styles",
     "Correo": "hasy@unal.edu.co",
@@ -78,7 +68,7 @@
     ],
     "Activo": true
   },
-  "0008": {
+  "0007": {
     "Código": 132443424,
     "Nombre": "Julio Agosto",
     "Correo": "jugos@unal.edu.co",
@@ -89,7 +79,7 @@
     ],
     "Activo": true
   },
-  "0009": {
+  "0008": {
     "Código": 134123,
     "Nombre": "Nomino Nomino",
     "Correo": "nono@unal.edu.co",
@@ -99,7 +89,7 @@
     ],
     "Activo": true
   },
-  "0010": {
+  "0009": {
     "Código": 76572992,
     "Nombre": "Rafael Robayo",
     "Correo": "rabo@unal.edu.co",
@@ -109,7 +99,7 @@
     ],
     "Activo": false
   },
-  "0011": {
+  "0010": {
     "Código": 98234,
     "Nombre": "Mohamed Salah",
     "Correo": "mosalah@unal.edu.co",
@@ -120,30 +110,30 @@
     ],
     "Activo": true
   },
-  "0012": {
+  "0011": {
     "Código": 762347476,
     "Nombre": "Luis Fernando Diaz",
     "Correo": "lucho_god@unal.edu.co",
     "Materias": [
-      "",
-      "",
-      "Colombia",
-      "Introducción a la Ingeniería"
+      "Goleador de Colombia",
+      "Goleador de la Selección",
+      "Introducción a la Ingeniería",
+      "Pensamiento Sistémico"
     ],
     "Activo": true
   },
-  "0013": {
+  "0012": {
     "Código": 66664,
     "Nombre": "Bolillo Gomez",
     "Correo": "bogo@unal.edu.co",
     "Materias": [
-      "",
-      "Golpe Certeros",
-      "Programación de Computadores"
+      "Pensamiento Sistémico",
+      "Introducción a la Ingeniería",
+      "Cálculo Diferencial"
     ],
     "Activo": true
   },
-  "0014": {
+  "0013": {
     "Código": 23416,
     "Nombre": "Hola que hace",
     "Correo": "hola@unal.edu.co",
@@ -155,7 +145,7 @@
     ],
     "Activo": false
   },
-  "0015": {
+  "0014": {
     "Código": 2134644,
     "Nombre": "Jesus Bendito",
     "Correo": "ywhch@unal.edu.co",
@@ -165,7 +155,7 @@
     ],
     "Activo": false
   },
-  "0016": {
+  "0015": {
     "Código": 643535,
     "Nombre": "El Fuicioso",
     "Correo": "fuicio@unal.edu.co",
@@ -175,7 +165,7 @@
     ],
     "Activo": false
   },
-  "0017": {
+  "0016": {
     "Código": 8763425,
     "Nombre": "Joe Arroyo",
     "Correo": "joe@unal.edu.co",
@@ -186,7 +176,7 @@
     ],
     "Activo": false
   },
-  "0018": {
+  "0017": {
     "Código": 265235,
     "Nombre": "Pepito Perez",
     "Correo": "pepe@unal.edu.co",
@@ -198,7 +188,7 @@
     ],
     "Activo": true
   },
-  "0019": {
+  "0018": {
     "Código": 872345,
     "Nombre": "Che Guevara",
     "Correo": "mamerto@unal.edu.co",
@@ -208,7 +198,7 @@
     ],
     "Activo": false
   },
-  "0020": {
+  "0019": {
     "Código": 987234542,
     "Nombre": "Máximo Decimo meridio",
     "Correo": "maximo@unal.edu.co",
@@ -218,7 +208,7 @@
     ],
     "Activo": false
   },
-  "0021": {
+  "0020": {
     "Código": 8762345,
     "Nombre": "Desmos Vensim",
     "Correo": "deven@unal.edu.co",
@@ -229,7 +219,7 @@
     ],
     "Activo": false
   },
-  "0022": {
+  "0021": {
     "Código": 16341234,
     "Nombre": "Juan Fernando Quintero",
     "Correo": "juanfequi@unal.edu.co",
@@ -238,17 +228,20 @@
     ],
     "Activo": true
   },
-  "0023": {
+  "0022": {
     "Código": 241234,
     "Nombre": "Juan Dinero",
     "Correo": "juandi@unal.edu.co",
     "Materias": [
-      "Pensamientto Sistémico",
-      "Algoritmos Avanzados"
+      "Pensamiento Sistémico",
+      "Introducción a la Ingeniería",
+      "Programación de Computadores",
+      "Cálculo Diferencial",
+      "Catedra de Inducción a la vidad Universitaria"
     ],
     "Activo": true
   },
-  "0024": {
+  "0023": {
     "Código": 123412,
     "Nombre": "Jun Jun",
     "Correo": "juju@unal.edu.co",
@@ -259,7 +252,7 @@
     ],
     "Activo": false
   },
-  "0025": {
+  "0024": {
     "Código": 13241234,
     "Nombre": "Kakashi Hatake",
     "Correo": "kakahata@unal.edu.co",
@@ -270,7 +263,7 @@
     ],
     "Activo": true
   },
-  "0026": {
+  "0025": {
     "Código": 7651234,
     "Nombre": "Naruto Uzumaki",
     "Correo": "nanadaime@unal.edu.co",
@@ -281,7 +274,7 @@
     ],
     "Activo": true
   },
-  "0027": {
+  "0026": {
     "Código": 124134,
     "Nombre": "Pepito Perez",
     "Correo": "pepe@unal.edu.co",
@@ -290,7 +283,7 @@
     ],
     "Activo": false
   },
-  "0028": {
+  "0027": {
     "Código": 132413,
     "Nombre": "Winona Rider",
     "Correo": "wini@unal.edu.co",
@@ -300,7 +293,7 @@
     ],
     "Activo": true
   },
-  "0029": {
+  "0028": {
     "Código": 76425566,
     "Nombre": "Hugo Ospina",
     "Correo": "hugo_boss@unal.edu.co",
@@ -311,17 +304,19 @@
     ],
     "Activo": true
   },
-  "0030": {
+  "0029": {
     "Código": 13414,
     "Nombre": "Matt Helders",
     "Correo": "matt@unal.edu.co",
     "Materias": [
       "Pensamiento Sistemico",
-      "Introducción a la Ingeniería"
+      "Introducción a la Ingeniería",
+      "Electiva 1",
+      "Electiva 2"
     ],
     "Activo": true
   },
-  "0031": {
+  "0030": {
     "Código": 2134565,
     "Nombre": "Alberto Manzanero",
     "Correo": "alma@unal.edu.co",
@@ -331,7 +326,7 @@
     ],
     "Activo": true
   },
-  "0032": {
+  "0031": {
     "Código": 3124555,
     "Nombre": "Dos más Uno",
     "Correo": "dos_uno@unal.edu.co",
@@ -342,7 +337,7 @@
     ],
     "Activo": true
   },
-  "0033": {
+  "0032": {
     "Código": 8766555364,
     "Nombre": "Fefe Boti",
     "Correo": "febo@unal.edu.co",
@@ -353,7 +348,7 @@
     ],
     "Activo": true
   },
-  "0034": {
+  "0033": {
     "Código": 213784623,
     "Nombre": "Pedro Aznar",
     "Correo": "peaz@unal.edu.co",
@@ -364,7 +359,7 @@
     ],
     "Activo": true
   },
-  "0035": {
+  "0034": {
     "Código": 32342234,
     "Nombre": "Fito Paez",
     "Correo": "fipa@unal.edu.co",
@@ -375,7 +370,7 @@
     ],
     "Activo": false
   },
-  "0036": {
+  "0035": {
     "Código": 3141244,
     "Nombre": "Matt Belamy",
     "Correo": "mat_muse@unal.edu.co",
@@ -387,7 +382,7 @@
     ],
     "Activo": true
   },
-  "0037": {
+  "0036": {
     "Código": 768321764,
     "Nombre": "Roy Barreras",
     "Correo": "roy_ba@unal.edu.co",
@@ -398,18 +393,19 @@
     ],
     "Activo": false
   },
-  "0038": {
+  "0037": {
     "Código": 1234124,
     "Nombre": "Years and Years",
     "Correo": "year_year@unal.edu.co",
     "Materias": [
       "Desire",
       "King",
-      "Shine"
+      "Shine",
+      "Megalomania"
     ],
     "Activo": true
   },
-  "0039": {
+  "0038": {
     "Código": 123444444,
     "Nombre": "Troya Silvan",
     "Correo": "trosil@unal.edu.co",
@@ -420,7 +416,7 @@
     ],
     "Activo": true
   },
-  "0040": {
+  "0039": {
     "Código": 8887754,
     "Nombre": "Olvia Rodrigo",
     "Correo": "olro@unal.edu.co",
@@ -430,9 +426,9 @@
       "Brutal",
       "Traitor"
     ],
-    "Activo": true
+    "Activo": false
   },
-  "0041": {
+  "0040": {
     "Código": 123123123,
     "Nombre": "Antonio Arnedo",
     "Correo": "anto_arne@unal.edu.co",
@@ -444,7 +440,7 @@
     ],
     "Activo": false
   },
-  "0042": {
+  "0041": {
     "Código": 78648652,
     "Nombre": "Bruno Mars",
     "Correo": "bruno_marte@unal.edu.co",
@@ -453,6 +449,44 @@
       "Looked Up on Heaven",
       "24K MAGIC",
       "Thats what I Like"
+    ],
+    "Activo": true
+  },
+  "0042": {
+    "Código": 73246444,
+    "Nombre": "Simon Bolivar",
+    "Correo": "el_libertonto@unal.edu.co",
+    "Materias": [
+      "Introducción a la Ingeniería",
+      "Pensamiento Sistémico",
+      "Cálculo Diferencial",
+      "Programación de Computadores",
+      "Catedra de Inducción a al vida Uiversitaria"
+    ],
+    "Activo": true
+  },
+  "0043": {
+    "Código": 4372868723,
+    "Nombre": "Eduardo Elric",
+    "Correo": "alquimista@unal.edu.co",
+    "Materias": [
+      "Programación de Computadores",
+      "Introducción a la Ingeniería",
+      "Pensamiento Sistémico",
+      "Cálculo Diferencial",
+      "Introducción a la vida Universitaria"
+    ],
+    "Activo": true
+  },
+  "0044": {
+    "Código": 62736523,
+    "Nombre": "Enric Mass",
+    "Correo": "enmas@unal.edu.co",
+    "Materias": [
+      "Ciclismo Internacional",
+      "Pensamiento Sistemico",
+      "Movistar Team",
+      "Enemigo de Nairo Quintana"
     ],
     "Activo": true
   }
