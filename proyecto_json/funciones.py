@@ -1,24 +1,24 @@
 import funcion_json     #se llama al modulo funcion_json.py
 from color import Color     #se llama al modulo color.py
 from subprocess import run     #se llama al modulo subprocess, más rápido que os.system()
-from re import compile, match   #se llama al modulo re para validar los datos ingresadosq
+from re import compile, match, search   #se llama al modulo re para validar los datos ingresadosq
 from platform import system     #se llama al modulo platform para conocer el sistema operativo que se está usando
 
 '''
-╬════════════════════════════════════════════════════════════════════════════════════════╬
-╬                                                                                        ╬
-╬                         __________MODULO FUNCIONES__________                           ╬
-╬        Todas las acciones principales del código serán llamadas de este archivo.       ╬
-╬                                                                                        ╬
-╬════════════════════════════════════════════════════════════════════════════════════════╬
+                                ╬════════════════════════════════════════════════════════════════════════════════════════╬
+                                ╬                                                                                        ╬
+                                ╬                         __________MODULO FUNCIONES__________                           ╬
+                                ╬        Todas las acciones principales del código serán llamadas de este archivo.       ╬
+                                ╬                                                                                        ╬
+                                ╬════════════════════════════════════════════════════════════════════════════════════════╬
 '''
 '''
-╬════════════════════════════════════════════════════════════════════════════════════════╬
-╬                                                                                        ╬
-╬                             __________VARIABLES__________                              ╬
-╬                Variables vacias que se utilizarán a lo largo del código.               ╬
-╬                                                                                        ╬
-╬════════════════════════════════════════════════════════════════════════════════════════╬
+                                ╬════════════════════════════════════════════════════════════════════════════════════════╬
+                                ╬                                                                                        ╬
+                                ╬                             __________VARIABLES__________                              ╬
+                                ╬                Variables vacias que se utilizarán a lo largo del código.               ╬
+                                ╬                                                                                        ╬
+                                ╬════════════════════════════════════════════════════════════════════════════════════════╬
 '''
 
 datos={}    #diccionario para almacenar los datos del estudiante
@@ -26,20 +26,19 @@ lista_de_materias = []  #lista para almacenar las materias del estudiante
 correo = compile("^[a-zA-Z0-9_]+@unal\.edu\.co$")    #expresión regular con el fin de validar el correo institucional del estudiante
 código_re = compile("^[0-9]{1,10}$")  #expresión regular con el fin de validar el código del estudiante
 nombre_re = compile("^[a-zA-ZáéíóúñÑÁÉÍÓÚüÜ]+\s+[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$") #expresión regular con el fin de validar el nombre del estudiante
-materias_re = compile("[a-zA-Z0-9áéíóúÁÉÍÓÚ\s]+$")
+materias_re = compile("[a-zA-Z0-9áéíóúÁÉÍÓÚüÜ\s]+$")
 
 '''
-╬════════════════════════════════════════════════════════════════════════════════════════╬
-╬                                                                                        ╬
-╬                    __________FUNCIONES SECUNDARIAS__________                           ╬
-╬        Funciones que simplifican acciones repetitivas a lo largo del código            ╬
-╬                                                                                        ╬
-╬════════════════════════════════════════════════════════════════════════════════════════╬
+                                ╬════════════════════════════════════════════════════════════════════════════════════════╬
+                                ╬                                                                                        ╬
+                                ╬                    __________FUNCIONES SECUNDARIAS__________                           ╬
+                                ╬        Funciones que simplifican acciones repetitivas a lo largo del código            ╬
+                                ╬                                                                                        ╬
+                                ╬════════════════════════════════════════════════════════════════════════════════════════╬
 '''
 
 def main():  #función principal
     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.CYAN}{Color.BOLD}{'Modulo funciones, este archivo no se ejecutará directamente':>78}{Color.RESET}{'╬':>11}\n╬{'╬':>89}\n╬{'═'*88}╬")
-
 
 def cambiar_tamaño_terminal():
     '''
@@ -51,8 +50,6 @@ def cambiar_tamaño_terminal():
         return run(['resize', '-s', str(100), str(50)])
     else:   #opción para MacOS :C maldito seas Steve Jobs
         return None
-
-
 
 def limpiar():  #función para limpiar la pantalla
     '''
@@ -121,16 +118,72 @@ def adios():    #función para despedirse
 ''')
                        
 def organizar(dato):        #organiza los datos de manera que se vean de manera ordenada
+    espacio=(' '*25)
     for key,value in dato.items():
         print(f"\n{Color.BOLD}{'_'*90}{Color.RESET}\n")
         print(f'{Color.BOLD}Registro:{Color.RESET} {key}')
         numero=key
         for key,value in dato[numero].items():
             if type(value) == list:
-                print(f"{'':>15}{Color.BOLD}{key}:{Color.RESET} ", end="")
-                print(*value, sep=", ")
+                j=0
+                lista_index_1 = []
+                lista_index_2 = []
+                lista_index_3 = []
+                lista_index_4 = []
+                lista_index_5 = []
+                for i in value:
+                    j=j+len(i)
+                    if j < 60:
+                        lista_index_1.append(i)
+                    elif j <120:
+                        lista_index_2.append(i)
+                    elif j <180:
+                        lista_index_3.append(i)
+                    elif j <240:
+                        lista_index_4.append(i)
+                    elif j <300:
+                        lista_index_5.append(i)
+                if len(lista_index_1) == 0:
+                    lista_index_1.append('Sin registro')
+                    print(f"{'':>15}{Color.BOLD}{key}:{Color.RESET} ", end="")
+                    print(*lista_index_1, sep=', ', end='.\n')
+                elif j < 60:
+                    print(f"{'':>15}{Color.BOLD}{key}:{Color.RESET} ", end="")
+                    print(*lista_index_1, sep=', ', end='.\n')
+                elif j <120:
+                    print(f"{'':>15}{Color.BOLD}{key}:{Color.RESET} ", end="")
+                    print(*lista_index_1, sep=', ', end=',\n')
+                    print(espacio, end='')
+                    print(*lista_index_2, end='.\n')
+                elif j <180:
+                    print(f"{'':>15}{Color.BOLD}{key}:{Color.RESET} ", end="")
+                    print(*lista_index_1, sep=', ', end=',\n')
+                    print(espacio, end='')
+                    print(*lista_index_2, sep=', ', end=',\n')
+                    print(espacio, end='')
+                    print(*lista_index_3, end='.\n')
+                elif j <240:
+                    print(f"{'':>15}{Color.BOLD}{key}:{Color.RESET} ", end="")
+                    print(*lista_index_1, sep=', ', end=',\n')
+                    print(espacio, end='')
+                    print(*lista_index_2, sep=', ', end=',\n')
+                    print(espacio, end='')
+                    print(*lista_index_3, sep=', ', end=',\n')
+                    print(espacio, end='')
+                    print(*lista_index_4, end='.\n')
+                elif j <300:
+                    print(f"{'':>15}{Color.BOLD}{key}:{Color.RESET} ", end="")
+                    print(*lista_index_1, sep=', ', end=',\n')
+                    print(espacio, end='')
+                    print(*lista_index_2, sep=', ', end=',\n')
+                    print(espacio, end='')
+                    print(*lista_index_3, sep=', ', end=',\n')
+                    print(espacio, end='')
+                    print(*lista_index_4, sep=', ', end=',\n')
+                    print(espacio, end='')
+                    print(*lista_index_5, end='.\n')
             else:
-                print(f"{'':>15}{Color.BOLD}{key}:{Color.RESET} {value}")
+                print(f"{'':>15}{Color.BOLD}{key}:{Color.RESET}{'':>2} {value}")
     print(f"\n{Color.BOLD}{'_'*90}{Color.RESET}\n")
 
 def input_alfabetico(): #función para ingresar datos alfabéticos
@@ -140,6 +193,7 @@ def input_alfabetico(): #función para ingresar datos alfabéticos
     global palabra  #se declara la variable como global para que pueda ser usada en otras funciones
     palabra = None #se declara la variable como None para que no se repita el valor anterior
     palabra = input(f"\n{Color.GREEN}{'':>10}Ingrese el dato:{Color.RESET}    ")
+    return palabra
       
 def input_numerico():   #función para ingresar datos numéricos
     '''
@@ -158,6 +212,7 @@ def input_numerico():   #función para ingresar datos numéricos
             error(número)
         finally:    #se ejecuta siempre
             pass
+    return número
 
 def Y_N():  #función para preguntar sí / no
     '''
@@ -176,6 +231,14 @@ def Y_N():  #función para preguntar sí / no
             error(escoger_Y_N)
         finally:
             pass
+    return escoger_Y_N
+
+def organizar_materias(lista_de_materias):   #función para organizar las materias de manera ordenada obedeciendo las margenes de la terminal
+    print(f"\n{Color.BOLD}{'_'*90}{Color.RESET}\n")
+    print(f"{'Materias registradas:':^90}")
+    for i in lista_de_materias:
+        print(f"{'':>5}{i}")
+    print(f"\n{Color.BOLD}{'_'*90}{Color.RESET}\n")
 
 def materias(lista_de_materias):    #función para ingresar las materias del estudiante
     opciones_1 = ['(1) - Ingresar materias', '(2) - Eliminar materia','(3) - Reingresar materias','(0) - Salir del modulo']
@@ -186,8 +249,7 @@ def materias(lista_de_materias):    #función para ingresar las materias del est
             if lista_de_materias == []:
                 print(f"\nEl estudiante no tiene materias registradas")
             else:
-                print(f"\nLas materias registradas son: \n{Color.BOLD}")
-                print(*lista_de_materias, sep=", ")
+                organizar_materias(lista_de_materias)
             print(f'{Color.RESET}{Color.GREEN}\nDigite las materias del estudiante:{Color.RESET}')
             materias=None
             input_alfabetico()
@@ -206,8 +268,7 @@ def materias(lista_de_materias):    #función para ingresar las materias del est
         while True:
             limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modulo Inscripción de Materias':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
-            print(f"\nEl estudiante tiene las siguientes materias registradas:")
-            print(*lista_de_materias, sep=", ")
+            organizar_materias(lista_de_materias)
             print(f"Escoja una opción:")
             for i in opciones_1:
                 print(f"\n{'':>30}{i}")
@@ -218,8 +279,7 @@ def materias(lista_de_materias):    #función para ingresar las materias del est
                 while True:
                     limpiar()
                     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modulo Inscripción de Materias':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
-                    print(f"\nEl estudiante tiene las siguientes materias registradas:")
-                    print(*lista_de_materias, sep=", ")
+                    organizar_materias(lista_de_materias)
                     print(f'{Color.RESET}{Color.GREEN}\nDigite las materias del estudiante:{Color.RESET}')
                     materias=None
                     input_alfabetico()
@@ -236,8 +296,7 @@ def materias(lista_de_materias):    #función para ingresar las materias del est
                 while True:
                     limpiar()
                     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modulo Inscripción de Materias':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
-                    print(f"\nEl estudiante tiene las siguientes materias registradas:")
-                    print(*lista_de_materias, sep=", ")
+                    organizar_materias(lista_de_materias)
                     print(f'{Color.RESET}{Color.GREEN}\nDigite la materia que desea eliminar:{Color.RESET}')
                     eliminar_materia=None
                     input_alfabetico()
@@ -257,8 +316,7 @@ def materias(lista_de_materias):    #función para ingresar las materias del est
                     if lista_de_materias == []:
                         print(f"\nEl estudiante no tiene materias registradas")
                     else:
-                        print(f"\nLas materias registradas son: \n{Color.BOLD}")
-                        print(*lista_de_materias, sep=", ")
+                        organizar_materias(lista_de_materias)
                     print(f'{Color.RESET}{Color.GREEN}\nDigite las materias del estudiante:{Color.RESET}')
                     materias=None
                     input_alfabetico()
@@ -298,10 +356,19 @@ def guardar_datos(modificar_datos,dato): #función para guardar los datos modifi
         print('\n El dato no fue modificado')
 
 '''
+                                    ╬════════════════════════════════════════════════════════════════════════════════════════╬
+                                    ╬                                                                                        ╬
+                                    ╬                    __________FUNCIONES PRINCIPALES__________                           ╬
+                                    ╬         Las cuatro funciones principales que definen la naturaleza del código          ╬
+                                    ╬                                                                                        ╬
+                                    ╬════════════════════════════════════════════════════════════════════════════════════════╬
+
+
+
 ╬════════════════════════════════════════════════════════════════════════════════════════╬
 ╬                                                                                        ╬
-╬                    __________FUNCIONES PRINCIPALES__________                           ╬
-╬         Las cuatro funciones principales que definen la naturaleza del código          ╬
+╬                   __________OPCIÓN #1 AÑADIR REGISTROS__________                       ╬
+╬                                                                                        ╬
 ╬                                                                                        ╬
 ╬════════════════════════════════════════════════════════════════════════════════════════╬
 '''
@@ -390,6 +457,14 @@ def opcion1():  #Añadir Registros
             print('\n Los datos no han sido registrados')
             break
     salida()
+'''
+╬════════════════════════════════════════════════════════════════════════════════════════╬
+╬                                                                                        ╬
+╬                 __________OPCIÓN #2 MODIFICAR REGISTROS__________                      ╬
+╬    (1) - Código     (2) - Nombre    (3) - Correo   (4) - Materias   (5) - Activo       ╬
+╬                                                                                        ╬
+╬════════════════════════════════════════════════════════════════════════════════════════╬
+'''
 
 def opcion2():  #Modifica Registros
     limpiar()
@@ -510,12 +585,20 @@ def opcion2():  #Modifica Registros
     elif escoger == 0:
         print('\nNo se modificó ningún dato')
     salida()
+'''
+╬════════════════════════════════════════════════════════════════════════════════════════╬
+╬                                                                                        ╬
+╬                 __________OPCIÓN #3 CONSULTAR REGISTROS__________                      ╬
+╬       (1) - Todos los registros    (2) - Un solo registro      (3) - Filtrar           ╬
+╬                                                                                        ╬
+╬════════════════════════════════════════════════════════════════════════════════════════╬
+'''
 
 def opcion3():  #Consultar registros
     limpiar()
     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
     funcion_json.consultar(datos)
-    opciones_consulta=['(1) - Todos los registros','(2) - Un solo registro', '(0) - Volver al menú principal']
+    opciones_consulta=['(1) - Todos los registros','(2) - Un solo registro','(3) - Filtrar', '(0) - Volver al menú principal']
     if not datos:   #si no hay datos registrados
         print('\nNo hay datos registrados')
     else:   #si hay datos registrados se imprimen en pantalla con un ciclo for anidado para recorrer el diccionario de datos y sus valores
@@ -532,29 +615,132 @@ def opcion3():  #Consultar registros
                 cantidad_datos = None
                 input_numerico()
                 cantidad_datos = número
-                if cantidad_datos == 1 or cantidad_datos == 2 or cantidad_datos == 0:
+                if cantidad_datos == 1 or cantidad_datos == 2 or cantidad_datos == 3 or cantidad_datos == 0:
                     break
                 else:
                     error(cantidad_datos)
         if cantidad_datos == 1:
+            limpiar()
+            print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
             dato=datos
             organizar(dato)
         elif cantidad_datos == 2:
+            limpiar()
+            print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
+            if n_datos == 1:
+                print(f"\nHay {n_datos} registro en la base de datos de estudiantes")
+            else:
+                print(f"\nHay {n_datos} registros en la base de datos de estudiantes")
             while True:
-                print("\nQué registro desea consultar?: ") #registro="0"*(4-len(str(r+1)))+str(r+1)
+                print("\nQué registro desea consultar?: ") 
                 num_dato_cons=None
                 input_numerico()
                 num_dato_cons="0"*(4-len(str(número)))+str(número)
                 if num_dato_cons in datos.keys():  #si el dato ingresado está en el diccionario de datos
+                    limpiar()
+                    print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
                     dato=dict({num_dato_cons:datos[num_dato_cons]}) #se crea un diccionario con el dato ingresado
                     organizar(dato) #se imprime el dato
                     break
                 else:
                     error(num_dato_cons)
+        elif cantidad_datos == 3:
+            opciones_filtro=['(1) - Materias', '(2) - Activo', '(0) - Volver al menú principal']
+            limpiar()
+            print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
+            for i in opciones_filtro:
+                print(f"\n{'':>30}{i}")
+            while True:
+                filtro_cons = None
+                input_numerico()
+                filtro_cons = número
+                if filtro_cons == 1 or filtro_cons == 2 or filtro_cons == 0:
+                    break
+                else:
+                    error(filtro_cons)
+            if filtro_cons == 2:
+                limpiar()
+                print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
+                print(f"\n¿Desea consultar los estudiantes (1) - Activos o (2) - Inactivos?")
+                while True:
+                    activos = None
+                    input_numerico()
+                    activos = número
+                    if activos == 1 or activos == 2:
+                        break
+                    else:
+                        error(activos)
+                lista_llaves = []
+                dict_llaves = {}
+                if activos == 1:
+                    f=True
+                    for key, values in datos.items():
+                        m=search(str(f), str(values['Activo']))
+                        if m:
+                            lista_llaves.append(key)
+                        else:
+                            pass
+                    for i in lista_llaves:
+                        dict_llaves.update({i:datos[i]})
+                    organizar(dict_llaves)
+                if activos == 2:
+                    f=False
+                    for key, values in datos.items():
+                        m=search(str(f), str(values['Activo']))
+                        if m:
+                            lista_llaves.append(key)
+                        else:
+                            pass
+                    for i in lista_llaves:
+                        dict_llaves.update({i:datos[i]})
+                    organizar(dict_llaves)
+            elif filtro_cons == 1:
+                lista_materias_filtro = []
+                for key, values in datos.items():
+                    for i in values['Materias']:
+                        if i not in lista_materias_filtro:
+                            lista_materias_filtro.append(i)
+                            lista_materias_filtro.sort()
+                        else:
+                            pass
+                limpiar()
+                print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
+                print(f"\n De la lista, escoja la materia que desea consultar: ")
+                organizar_materias(lista_materias_filtro)
+                while True:
+                    input1 = None
+                    input_alfabetico()
+                    input1 = palabra
+                    if input1 in lista_materias_filtro:
+                        jj=input1
+                        break
+                    else:
+                        print('La materia no se encuentra registrada, intente de nuevo')
+                        continue
+                lista_llaves = []
+                dict_llaves = {}
+                limpiar()
+                print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
+                for key, values in datos.items():
+                    m=search(str(jj), str(values['Materias']))
+                    if m:
+                        lista_llaves.append(key)
+                    else:
+                        pass
+                for i in lista_llaves:
+                    dict_llaves.update({i:datos[i]})
+                organizar(dict_llaves)
         elif cantidad_datos == 0:
             print('\nNo se consultó ningún dato')
     salida()
-
+'''
+╬════════════════════════════════════════════════════════════════════════════════════════╬
+╬                                                                                        ╬
+╬                 __________OPCIÓN #4 ELIMINAR REGISTROS__________                       ╬
+╬            (1) - Todos los registros        (2) - Un solo registro                     ╬
+╬                                                                                        ╬
+╬════════════════════════════════════════════════════════════════════════════════════════╬
+'''
 def opcion4():  #Eliminar registros
     limpiar()
     opciones_4=['(1) - Todos los registros','(2) - Un solo registro','(0) - Volver al menú principal']
@@ -582,6 +768,8 @@ def opcion4():  #Eliminar registros
             print('\nLa base de datos no ha sido eliminada')    
         salida()
     elif eliminar_datos == 2:
+        limpiar()
+        print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Eliminar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
         funcion_json.consultar(datos)
         print(f"\nHay {Color.RED}{len(datos.keys())}{Color.RESET} registrados en la base de datos.Escriba el número de registro que desea eliminar:")
         while True:
@@ -589,6 +777,8 @@ def opcion4():  #Eliminar registros
             input_numerico()
             eliminar="0"*(4-len(str(número)))+str(número)
             if eliminar in datos.keys():
+                limpiar()
+                print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Eliminar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
                 dato = dict({eliminar:datos[eliminar]})
                 organizar(dato)
                 print(f'\n{Color.RED}Desea eliminar este dato? esta acción no se puede revertir.{Color.RESET}')
@@ -617,4 +807,4 @@ def opcion4():  #Eliminar registros
         salida()
 
 if __name__ == "__main__":  #indica que el modulo no se ejecutará automáticamente a menos que sea llamado <funciones.funcion_que_se_llama()>
-    main()
+    main()  #se llama la función main()
