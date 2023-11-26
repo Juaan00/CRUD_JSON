@@ -45,9 +45,9 @@ def cambiar_tamaño_terminal():
     Si el sistema operaivo es windows o LINUX, se cambia el tamaño de la terminal. MacOS no tiene esta opción.
     '''
     if system() == 'Windows':   #opción para windows
-        return run(f'mode con: cols={100} lines={50}', shell=True)
+        return run(f'mode con: cols={110} lines={60}', shell=True)
     elif system() == 'Linux':   #opción para linux
-        return run(['resize', '-s', str(100), str(50)])
+        return run(['resize', '-s', str(110), str(60)])
     else:   #opción para MacOS :C maldito seas Steve Jobs
         return None
 
