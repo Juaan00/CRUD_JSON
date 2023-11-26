@@ -26,7 +26,7 @@ lista_de_materias = []  #lista para almacenar las materias del estudiante
 correo = compile("^[a-zA-Z0-9_]+@unal\.edu\.co$")    #expresión regular con el fin de validar el correo institucional del estudiante
 código_re = compile("^[0-9]{1,10}$")  #expresión regular con el fin de validar el código del estudiante
 nombre_re = compile("^[a-zA-ZáéíóúñÑÁÉÍÓÚüÜ]+\s+[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$") #expresión regular con el fin de validar el nombre del estudiante
-materias_re = compile("[a-zA-Z0-9áéíóúÁÉÍÓÚüÜ\s]+$")
+materias_re = compile("[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s]+$")
 
 '''
                                 ╬════════════════════════════════════════════════════════════════════════════════════════╬
