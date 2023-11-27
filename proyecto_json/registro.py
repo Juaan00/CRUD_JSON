@@ -1,4 +1,5 @@
 import funciones
+from color import Color
 '''
 ╬════════════════════════════════════════════════════════════════════════════════════════╬
 ╬                                                                                        ╬
@@ -36,7 +37,10 @@ def programa_registro():
         elif entrada_usuario == 0:
             funciones.adios()
             break
+        elif entrada_usuario == None:
+            funciones.salida()
         else:
             funciones.error(entrada_usuario)
+            funciones.salida()
 if __name__ == "__main__":
     programa_registro()
