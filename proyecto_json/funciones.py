@@ -42,9 +42,6 @@ def main():  #función principal
 
 
 def limpiar():  #función para limpiar la pantalla
-    '''
-    Por medio de la librería os, se limpia la pantalla de la consola, dependiendo del sistema operativo que se esté usando se ejecuta un comando diferente.
-    '''
     if system() == 'Linux' or system() == 'Darwin': #nombre que le da python a MacOS/UNIX
         return run('clear',shell=True)
     else:
@@ -64,20 +61,8 @@ def error(variable):   #función para mostrar error de entrada
 
         
 def salida():   #función para salir del programa
-    '''
-    Esta función se encarga de pausar la pantalla y obliga al usuario a presionar una tecla para continuar
-    ->comandos utilizados de la terminal bash/zsh:
-    -c -> ejecuta el comando que se le pase como argumento
-    read -> lee la entrada del usuario
-    -n 1 -> read regresa después de leer n caracteres
-    -s -> modo silencioso, no muestra la entrada del usuario
-    -r -> no interpreta los caracteres de escape [\]
-    -p -> muestra un mensaje al usuario
-    ->comandos utilizados de la terminal cmd:
-    pause -> pausa la pantalla y obliga al usuario a presionar una tecla para continuar
-    '''
     if system() == 'Linux' or system() == 'Darwin': #opción para linux y MacOS
-        return run('/bin/bash -c \'read -n 1 -s -r -p "\n<<<Presione una tecla para continuar>>>"\'', shell=True), print() #no tengo ni puta idea por qué sirve esta mierda :U
+        return run('/bin/bash -c \'read -n 1 -s -r -p "\n<<<Presione una tecla para continuar>>>"\'', shell=True), print() 
     else:   #opción para windows
         return run('pause',shell=True)
         
@@ -86,26 +71,15 @@ def pantalla(): #función para mostrar la pantalla principal
     lista=['(1): Crear registros','(2): Modificar registros','(3): Consultar registros', '(4): Eliminar registros', '(0): <Terminar>']
     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Programa para el manejo de Estudiantes del Curso':>68}{Color.RESET}{'╬':>21}\n╬{'╬':>89}\n╬{'═'*88}╬")
     for i in lista:
-        print(f"\n{'':>30}{i}")
-    print(f"\n{Color.GREEN}{'(╯°□°）╯ ┻━┻  Escoja una opción (╯°□°）╯ ┻━┻':^90}{Color.RESET}")
+        print(f"\n{'':>33}{i}")
+    print(f"\n{Color.GREEN}{'┻━┻  Escoja una opción ┻━┻':^90}{Color.RESET}")
             
 def adios():    #función para despedirse
     limpiar()
     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Programa Finalizado':>53}{Color.RESET}{'╬':>36}\n╬{'╬':>89}\n╬{'═'*88}╬")
-    print(f'''
-                    ╭━━━━-╮
-                    ╰┃ ┣▇━▇
-                     ┃ ┃  ╰━▅╮
-                     ╰┳╯ ╰━━┳╯ 
-                      ╰╮ ┳━━╯     
-                     ▕▔▋ ╰╮╭━╮ 
-                    ╱▔╲▋╰━┻┻╮╲╱▔▔▔╲
-                    ▏  ▔▔▔▔▔▔▔  O O┃        {Color.BOLD}{Color.RED}¡ADIOS,{Color.GREEN} FELIZ NAVIDAD {Color.RED}Y FELIZ AÑO{Color.GREEN} NUEVO!{Color.RESET}
-                    ╲╱▔╲▂▂▂▂╱▔╲▂▂▂╱
-                     ▏╳▕▇▇▕ ▏╳▕▇▇▕
-                     ╲▂╱╲▂╱ ╲▂╱╲▂╱
-                            
-''')
+    print(f"{Color.BOLD}{Color.RED}\n\n\n\n{'¡ADIOS!':^90}{Color.RESET}")
+    salida()
+    limpiar()
                        
 def organizar(dato):        #organiza los datos de manera que se vean de manera ordenada
     espacio=(' '*25)
@@ -180,10 +154,19 @@ def input_alfabetico(): #función para ingresar datos alfabéticos
     '''
     INPUT DATOS ALFABÉTICOS
     '''
-    global palabra  #se declara la variable como global para que pueda ser usada en otras funciones
-    palabra = None #se declara la variable como None para que no se repita el valor anterior
-    palabra = input(f"\n{Color.GREEN}{'':>10}Ingrese el dato:{Color.RESET}    ")
-    return palabra
+    while True:
+        try:
+            global palabra  #se declara la variable como global para que pueda ser usada en otras funciones
+            palabra = None #se declara la variable como None para que no se repita el valor anterior
+            palabra = input(f"\n{Color.GREEN}{'':>10}Ingrese el dato:{Color.RESET}    ")
+            if palabra:
+                break
+        except KeyboardInterrupt:
+            print(f"\n{Color.RED}<<Entrada incorrecta>> .{Color.RESET}")
+        except TypeError:
+            error(palabra)
+        finally:    #se ejecuta siempre
+            return palabra
       
 def input_numerico():   #función para ingresar datos numéricos
     '''
@@ -200,9 +183,12 @@ def input_numerico():   #función para ingresar datos numéricos
                 error(número)
         except ValueError:
             error(número)
+        except KeyboardInterrupt:
+            print(f"\n{Color.RED}<<Entrada incorrecta>> .{Color.RESET}")
+        except TypeError:
+            error(número)
         finally:    #se ejecuta siempre
-            pass
-    return número
+            return número
 
 def Y_N():  #función para preguntar sí / no
     '''
@@ -219,9 +205,12 @@ def Y_N():  #función para preguntar sí / no
                 error(escoger_Y_N)
         except ValueError:
             error(escoger_Y_N)
+        except KeyboardInterrupt:
+            print(f"\n{Color.RED}<<Entrada incorrecta>> .{Color.RESET}")
+        except TypeError:
+            error(escoger_Y_N)
         finally:
-            pass
-    return escoger_Y_N
+            return escoger_Y_N
 
 def organizar_materias(lista_de_materias):   #función para organizar las materias de manera ordenada obedeciendo las margenes de la terminal
     print(f"\n{Color.BOLD}{'_'*90}{Color.RESET}\n")
@@ -246,14 +235,15 @@ def materias(lista_de_materias):    #función para ingresar las materias del est
             materias=palabra
             if match(materias_re, materias):
                 lista_de_materias.append(materias)
-                print("\n¿Desea incribir otras materias?")
-                Y_N()
-                if escoger_Y_N =='N' or escoger_Y_N == 'n':
-                    break
-                elif escoger_Y_N == 'Y' or escoger_Y_N == 'y':
-                    continue
-                else:
-                    error(materias)
+                while True:
+                    print("\n¿Desea incribir otras materias?")
+                    Y_N()
+                    if escoger_Y_N =='N' or escoger_Y_N == 'n':
+                        break
+                    elif escoger_Y_N == 'Y' or escoger_Y_N == 'y':
+                        continue
+                    else:
+                        salida()
     elif lista_de_materias != []:
         while True:
             limpiar()
@@ -364,28 +354,29 @@ def guardar_datos(modificar_datos,dato): #función para guardar los datos modifi
 '''
 
 def opcion1():  #Añadir Registros
-    limpiar()
     dato={}
+    funcion_json.consultar(datos)
+    r = len(datos)
+    global registro
+    registro = None
+    if r == 0:
+        registro="0001"
+    else:
+        registro="0"*(4-len(str(r+1)))+str(r+1)
     while True:
-        funcion_json.consultar(datos)
-        r = len(datos)
-        global registro
-        registro = None
-        if r == 0:
-            registro="0001"
-        else:
-            registro="0"*(4-len(str(r+1)))+str(r+1)
+        limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Ingreso de Registro':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
         print(f"{' '*20}Registro de estudiante # {registro}")
         print(f'{Color.GREEN}\nIngrese el código del estudiante:{Color.RESET}')
-        while True:
-            código=None
-            input_numerico()
-            código=número
-            if match(código_re,str(código)):
-                break
-            else:
-                print(f"\n{Color.RED}<<Entrada incorrecta>> [{código}] no es un código válido, no puede pasar de 10 digitos.{Color.RESET}")
+        código=None
+        input_numerico()
+        código=número
+        if match(código_re,str(código)):
+            break
+        else:
+            print(f"\n{Color.RED}<<Entrada incorrecta>> [{código}] no es un código válido, no puede pasar de 10 digitos.{Color.RESET}")
+            salida()
+    while True:
         limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Ingreso de Registro':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
         dato.update({registro:{
@@ -396,44 +387,50 @@ def opcion1():  #Añadir Registros
             'Activo':"Sin registro"}})
         organizar(dato)
         print(f'{Color.GREEN}\nIngrese el nombre del estudiante:{Color.RESET}')
-        while True:
-            nombre=None
-            input_alfabetico()
-            nombre=palabra
-            if match(nombre_re,nombre):
-                break
-            else:
-                print(f"\n{Color.RED}<<Entrada incorrecta>> [{nombre}] debe tener mínimo un nombre y aprellino.{Color.RESET}")
+        nombre=None
+        input_alfabetico()
+        nombre=palabra
+        if match(nombre_re,nombre):
+            break
+        else:
+            print(f"\n{Color.RED}<<Entrada incorrecta>> [{nombre}] debe tener mínimo un nombre y aprellino.{Color.RESET}")
+            salida()
+    while True:
         limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Ingreso de Registro':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
         dato[registro]['Nombre'] = nombre
         organizar(dato)
         print(f'{Color.GREEN}\nIngrese el correo del estudiante:{Color.RESET}')
-        while True:
-            correo_i=None
-            input_alfabetico()
-            correo_i=palabra
-            if match(correo,correo_i):
-                break
-            else:
-                print(f"\n{Color.RED}<<Entrada incorrecta>> [{correo_i}] no obedece el dominio @unal.edu.co.{Color.RESET}")
-        limpiar()
-        print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Ingreso de Registro':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
-        dato[registro]['Correo'] = correo_i
-        organizar(dato)
-        lista_de_materias.clear()
-        materias(lista_de_materias)
+        correo_i=None
+        input_alfabetico()
+        correo_i=palabra
+        if match(correo,correo_i):
+            dato[registro]['Correo'] = correo_i
+            organizar(dato)
+            break
+        else:
+            print(f"\n{Color.RED}<<Entrada incorrecta>> [{correo_i}] no obedece el dominio @unal.edu.co.{Color.RESET}")
+            salida()
+    lista_de_materias.clear()
+    materias(lista_de_materias)
+    while True:
         limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Ingreso de Registro':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
         dato[registro]['Materias'] = lista_de_materias
         organizar(dato)
         print(f'{Color.GREEN}\n¿El estudiantes se encuentra activo?{Color.RESET}')
         Y_N()
-        bol=(escoger_Y_N=='Y' or escoger_Y_N=='y')
-        dato[registro]['Activo'] = bol
+        if escoger_Y_N == 'Y' or escoger_Y_N == 'y':
+            dato[registro]['Activo'] = True
+            break
+        elif escoger_Y_N == 'N' or escoger_Y_N == 'n':
+            dato[registro]['Activo'] = False
+            break
+        else:
+            salida()
+    while True:
         limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Ingreso de Registro':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
-        dato[registro]['Correo'] = correo_i
         organizar(dato)       
         print('\nLos datos quedarán registrados de la siguiente manera, ¿Desea grabarlos así?')
         Y_N()
@@ -441,12 +438,15 @@ def opcion1():  #Añadir Registros
             datos.update(dato)
             funcion_json.insertar(datos)
             print('\n Los datos han sido registrados de manera satisfactoria')
-            datos.clear()  
+            datos.clear()
+            salida()  
             break
         elif escoger_Y_N == 'N' or escoger_Y_N == 'n':
-            print('\n Los datos no han sido registrados')
+            print('\n Los datos no fueron registrados')
+            salida()
             break
-    salida()
+        else:
+            salida()
 '''
 ╬════════════════════════════════════════════════════════════════════════════════════════╬
 ╬                                                                                        ╬
