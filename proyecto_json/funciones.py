@@ -72,7 +72,7 @@ def pantalla(): #función para mostrar la pantalla principal
     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Programa para el manejo de Estudiantes del Curso':>68}{Color.RESET}{'╬':>21}\n╬{'╬':>89}\n╬{'═'*88}╬")
     for i in lista:
         print(f"\n{'':>33}{i}")
-    print(f"\n{Color.GREEN}{'┻━┻  Escoja una opción ┻━┻':^90}{Color.RESET}")
+    print(f"\n{Color.GREEN}{'-> Escoja una opción <-':^90}{Color.RESET}")
             
 def adios():    #función para despedirse
     limpiar()
@@ -82,10 +82,10 @@ def adios():    #función para despedirse
     limpiar()
                        
 def organizar(dato):        #organiza los datos de manera que se vean de manera ordenada
-    espacio=(' '*25)
+    espacio=(' '*15)
     for key,value in dato.items():
         print(f"\n{Color.BOLD}{'_'*90}{Color.RESET}\n")
-        print(f'{Color.BOLD}Registro:{Color.RESET} {key}')
+        print(f"{Color.BOLD}Código:{Color.RESET} {value['Código']}\n")
         numero=key
         for key,value in dato[numero].items():
             if type(value) == list:
@@ -97,37 +97,37 @@ def organizar(dato):        #organiza los datos de manera que se vean de manera 
                 lista_index_5 = []
                 for i in value:
                     j=j+len(i)
-                    if j < 60:
+                    if j < 70:
                         lista_index_1.append(i)
-                    elif j <120:
+                    elif j <140:
                         lista_index_2.append(i)
-                    elif j <180:
+                    elif j <210:
                         lista_index_3.append(i)
-                    elif j <240:
+                    elif j <280:
                         lista_index_4.append(i)
-                    elif j <300:
+                    elif j <350:
                         lista_index_5.append(i)
                 if len(lista_index_1) == 0:
                     lista_index_1.append('Sin registro')
-                    print(f"{'':>15}{Color.BOLD}{key}:{Color.RESET} ", end="")
+                    print(f"{'':>5}{Color.BOLD}{key}:{Color.RESET} ", end="")
                     print(*lista_index_1, sep=', ', end='.\n')
-                elif j < 60:
-                    print(f"{'':>15}{Color.BOLD}{key}:{Color.RESET} ", end="")
+                elif j < 70:
+                    print(f"{'':>5}{Color.BOLD}{key}:{Color.RESET} ", end="")
                     print(*lista_index_1, sep=', ', end='.\n')
-                elif j <120:
-                    print(f"{'':>15}{Color.BOLD}{key}:{Color.RESET} ", end="")
+                elif j <140:
+                    print(f"{'':>5}{Color.BOLD}{key}:{Color.RESET} ", end="")
                     print(*lista_index_1, sep=', ', end=',\n')
                     print(espacio, end='')
                     print(*lista_index_2, end='.\n')
-                elif j <180:
-                    print(f"{'':>15}{Color.BOLD}{key}:{Color.RESET} ", end="")
+                elif j <210:
+                    print(f"{'':>5}{Color.BOLD}{key}:{Color.RESET} ", end="")
                     print(*lista_index_1, sep=', ', end=',\n')
                     print(espacio, end='')
                     print(*lista_index_2, sep=', ', end=',\n')
                     print(espacio, end='')
                     print(*lista_index_3, end='.\n')
-                elif j <240:
-                    print(f"{'':>15}{Color.BOLD}{key}:{Color.RESET} ", end="")
+                elif j <280:
+                    print(f"{'':>5}{Color.BOLD}{key}:{Color.RESET} ", end="")
                     print(*lista_index_1, sep=', ', end=',\n')
                     print(espacio, end='')
                     print(*lista_index_2, sep=', ', end=',\n')
@@ -135,8 +135,8 @@ def organizar(dato):        #organiza los datos de manera que se vean de manera 
                     print(*lista_index_3, sep=', ', end=',\n')
                     print(espacio, end='')
                     print(*lista_index_4, end='.\n')
-                elif j <300:
-                    print(f"{'':>15}{Color.BOLD}{key}:{Color.RESET} ", end="")
+                elif j <350:
+                    print(f"{'':>5}{Color.BOLD}{key}:{Color.RESET} ", end="")
                     print(*lista_index_1, sep=', ', end=',\n')
                     print(espacio, end='')
                     print(*lista_index_2, sep=', ', end=',\n')
@@ -146,8 +146,10 @@ def organizar(dato):        #organiza los datos de manera que se vean de manera 
                     print(*lista_index_4, sep=', ', end=',\n')
                     print(espacio, end='')
                     print(*lista_index_5, end='.\n')
+            elif type(value) == int:
+                pass
             else:
-                print(f"{'':>15}{Color.BOLD}{key}:{Color.RESET}{'':>2} {value}")
+                print(f"{'':>5}{Color.BOLD}{key}:{Color.RESET}{'':>2} {value}")
     print(f"\n{Color.BOLD}{'_'*90}{Color.RESET}\n")
 
 def input_alfabetico(): #función para ingresar datos alfabéticos
@@ -162,9 +164,9 @@ def input_alfabetico(): #función para ingresar datos alfabéticos
             if palabra:
                 break
         except KeyboardInterrupt:
-            print(f"\n{Color.RED}<<Entrada incorrecta>> .{Color.RESET}")
+            continue
         except TypeError:
-            error(palabra)
+            continue
         finally:    #se ejecuta siempre
             return palabra
       
@@ -184,7 +186,7 @@ def input_numerico():   #función para ingresar datos numéricos
         except ValueError:
             error(número)
         except KeyboardInterrupt:
-            print(f"\n{Color.RED}<<Entrada incorrecta>> .{Color.RESET}")
+            error(número)
         except TypeError:
             error(número)
         finally:    #se ejecuta siempre
@@ -206,7 +208,7 @@ def Y_N():  #función para preguntar sí / no
         except ValueError:
             error(escoger_Y_N)
         except KeyboardInterrupt:
-            print(f"\n{Color.RED}<<Entrada incorrecta>> .{Color.RESET}")
+            error(escoger_Y_N)
         except TypeError:
             error(escoger_Y_N)
         finally:
@@ -235,15 +237,17 @@ def materias(lista_de_materias):    #función para ingresar las materias del est
             materias=palabra
             if match(materias_re, materias):
                 lista_de_materias.append(materias)
-                while True:
-                    print("\n¿Desea incribir otras materias?")
-                    Y_N()
-                    if escoger_Y_N =='N' or escoger_Y_N == 'n':
-                        break
-                    elif escoger_Y_N == 'Y' or escoger_Y_N == 'y':
-                        continue
-                    else:
-                        salida()
+                print("\n¿Desea incribir otras materias?")
+                Y_N()
+            else:
+                error(materias)
+                salida()
+                continue
+            if escoger_Y_N =='N' or escoger_Y_N == 'n':
+                break
+            elif escoger_Y_N == 'Y' or escoger_Y_N == 'y':
+                continue
+
     elif lista_de_materias != []:
         while True:
             limpiar()
@@ -374,17 +378,17 @@ def opcion1():  #Añadir Registros
         if match(código_re,str(código)):
             break
         else:
-            print(f"\n{Color.RED}<<Entrada incorrecta>> [{código}] no es un código válido, no puede pasar de 10 digitos.{Color.RESET}")
+            print(f"\n{Color.RED} Ingrese un código valido, no puede ser mayor a {Color.SUBRAY}10 digitos.{Color.RESET}")
             salida()
     while True:
         limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Ingreso de Registro':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
         dato.update({registro:{
             'Código':código,
-            'Nombre':"Sin registro",
-            'Correo':"Sin registro",
-            'Materias':"Sin registro",
-            'Activo':"Sin registro"}})
+            'Nombre':"N/A",
+            'Correo':"N/A",
+            'Materias':"N/A",
+            'Activo':"N/A"}})
         organizar(dato)
         print(f'{Color.GREEN}\nIngrese el nombre del estudiante:{Color.RESET}')
         nombre=None
@@ -466,8 +470,13 @@ def opcion2():  #Modifica Registros
         n_datos = len(datos)
         if n_datos == 1:
             print(f"\nHay {n_datos} registro en la base de datos de estudiantes")
+            for key,value in datos.items():
+                    print(f"{Color.GREEN}Registro{Color.RESET} - {key}{'':>10}{Color.GREEN}Código{Color.RESET} - {value['Código']}")
+            
         else:
             print(f"\nHay {n_datos} registros en la base de datos de estudiantes")
+            for key,value in datos.items():
+                    print(f"{Color.GREEN}Registro{Color.RESET} - {key}{'':>10}{Color.GREEN}Código{Color.RESET} - {value['Código']}")
     while True:
         print('\nIngrese el número de registro que desea modificar:')
         modificar_datos=None
@@ -618,9 +627,30 @@ def opcion3():  #Consultar registros
             limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
             if n_datos == 1:
-                print(f"\nHay {n_datos} registro en la base de datos de estudiantes")
+                limpiar()
+                print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
+                dato=datos
+                organizar(dato)
             else:
-                print(f"\nHay {n_datos} registros en la base de datos de estudiantes")
+                print(f"\nHay {n_datos} registro en la base de datos de estudiantes:")
+                c_o2_escoger= ["(1) - Código", "(2) - Nombre"]
+                print(f"Desea buscar por:")
+                for i in c_o2_escoger:
+                    print(f"\n{'':>30}{i}")
+                while True:
+                    c_o2 = None
+                    input_numerico()
+                    c_o2 = número
+                    if c_o2 == 1 or c_o2 == 2:
+                        break
+                    else:
+                        error(c_o2)
+                if c_o2 == 1:
+                    for key,value in datos.items():
+                        print(f"{Color.GREEN}Registro{Color.RESET} - {key}{'':>10}{Color.GREEN}Código{Color.RESET} - {value['Código']}")
+                elif c_o2 == 2:
+                    for key,value in datos.items():
+                        print(f"{Color.GREEN}Registro{Color.RESET} - {key}{'':>10}{Color.GREEN}Nombre{Color.RESET} - {value['Nombre']}")
             while True:
                 print("\nQué registro desea consultar?: ") 
                 num_dato_cons=None
@@ -761,7 +791,26 @@ def opcion4():  #Eliminar registros
         limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Eliminar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
         funcion_json.consultar(datos)
-        print(f"\nHay {Color.RED}{len(datos.keys())}{Color.RESET} registrados en la base de datos.Escriba el número de registro que desea eliminar:")
+        print(f"\nHay {Color.RED}{len(datos.keys())}{Color.RESET} registrados en la base de datos.")
+        c_o2_escoger= ["(1) - Código", "(2) - Nombre"]
+        print(f"Desea buscar por:")
+        for i in c_o2_escoger:
+            print(f"\n{'':>30}{i}")
+        while True:
+            c_o2 = None
+            input_numerico()
+            c_o2 = número
+            if c_o2 == 1 or c_o2 == 2:
+                break
+            else:
+                error(c_o2)
+        if c_o2 == 1:
+            for key,value in datos.items():
+                print(f"{Color.GREEN}Registro{Color.RESET} - {key}{'':>10}{Color.GREEN}Código{Color.RESET} - {value['Código']}")
+        elif c_o2 == 2:
+            for key,value in datos.items():
+                print(f"{Color.GREEN}Registro{Color.RESET} - {key}{'':>10}{Color.GREEN}Nombre{Color.RESET} - {value['Nombre']}")
+        print('\nIngrese el número de registro que desea eliminar:')
         while True:
             eliminar=None
             input_numerico()

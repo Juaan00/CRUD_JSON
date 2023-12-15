@@ -13,28 +13,17 @@
     "Activo": true
   },
   "0002": {
-    "Código": 12312313,
+    "Código": 871234561234124,
     "Nombre": "Gabriel Boric",
     "Correo": "gabo@unal.edu.co",
     "Materias": [
       "Pensamiento Sistémico",
       "Catedra de Taylor Swift",
-      "Programación de Computadores",
-      "Electiva 1"
+      "Programación de Computadores"
     ],
     "Activo": true
   },
   "0003": {
-    "Código": 746562243,
-    "Nombre": "Jhon Legends",
-    "Correo": "jole@unal.edu.co",
-    "Materias": [
-      "Introducción a la Ingeniería",
-      "Armonía Avanzada"
-    ],
-    "Activo": true
-  },
-  "0004": {
     "Código": 1234,
     "Nombre": "Taylor Swift",
     "Correo": "dios@unal.edu.co",
@@ -45,7 +34,7 @@
     ],
     "Activo": false
   },
-  "0005": {
+  "0004": {
     "Código": 2341341,
     "Nombre": "Bruno Mars",
     "Correo": "bruma@unal.edu.co",
@@ -54,6 +43,17 @@
       "24K MAGIC",
       "One direction",
       "Programación de Computadores"
+    ],
+    "Activo": true
+  },
+  "0005": {
+    "Código": 1324712346,
+    "Nombre": "The Lord Weekend",
+    "Correo": "i_feel_it_coming@unal.edu.co",
+    "Materias": [
+      "Álgebra Lineal",
+      "Programación de Computadores",
+      "Cálculo Diferencia"
     ],
     "Activo": true
   },
@@ -115,10 +115,12 @@
     "Nombre": "Luis Fernando Diaz",
     "Correo": "lucho_god@unal.edu.co",
     "Materias": [
-      "Goleador de Colombia",
-      "Goleador de la Selección",
+      "Pensamiento sistémico",
+      "Programación de Computadores",
       "Introducción a la Ingeniería",
-      "Pensamiento Sistémico"
+      "Cálculo Diferencial",
+      "Goleador de la Selección",
+      "Goleador del Liverpool"
     ],
     "Activo": true
   },
@@ -127,9 +129,9 @@
     "Nombre": "Bolillo Gomez",
     "Correo": "bogo@unal.edu.co",
     "Materias": [
-      "Pensamiento Sistémico",
-      "Introducción a la Ingeniería",
-      "Cálculo Diferencial"
+      "",
+      "Golpe Certeros",
+      "Programación de Computadores"
     ],
     "Activo": true
   },
@@ -151,7 +153,8 @@
     "Correo": "ywhch@unal.edu.co",
     "Materias": [
       "Milagros de los Gods",
-      "Programación Orientada a Objetos"
+      "Programación Orientada a Objetos",
+      "El rey de reyes"
     ],
     "Activo": false
   },
@@ -220,7 +223,7 @@
     "Activo": false
   },
   "0021": {
-    "Código": 16341234,
+    "Código": 987654321,
     "Nombre": "Juan Fernando Quintero",
     "Correo": "juanfequi@unal.edu.co",
     "Materias": [
@@ -310,9 +313,7 @@
     "Correo": "matt@unal.edu.co",
     "Materias": [
       "Pensamiento Sistemico",
-      "Introducción a la Ingeniería",
-      "Electiva 1",
-      "Electiva 2"
+      "Introducción a la Ingeniería"
     ],
     "Activo": true
   },
@@ -331,9 +332,11 @@
     "Nombre": "Dos más Uno",
     "Correo": "dos_uno@unal.edu.co",
     "Materias": [
-      "Pensamiento Sistémico",
-      "Introducción a la Ingeniería",
-      "Cálculo Diferencial"
+      "Yo me Quedo",
+      "La Pomena",
+      "Seremos Todo",
+      "Sincera Confesión",
+      "Amarraditos"
     ],
     "Activo": true
   },
@@ -360,7 +363,7 @@
     "Activo": true
   },
   "0034": {
-    "Código": 32342234,
+    "Código": 123123123,
     "Nombre": "Fito Paez",
     "Correo": "fipa@unal.edu.co",
     "Materias": [
@@ -479,14 +482,39 @@
     "Activo": true
   },
   "0044": {
-    "Código": 62736523,
-    "Nombre": "Enric Mass",
-    "Correo": "enmas@unal.edu.co",
+    "Código": 123123123,
+    "Nombre": "Numo Numos",
+    "Correo": "numo@unal.edu.co",
     "Materias": [
-      "Ciclismo Internacional",
-      "Pensamiento Sistemico",
-      "Movistar Team",
-      "Enemigo de Nairo Quintana"
+      "Pensamiento Sistémico"
+    ],
+    "Activo": true
+  },
+  "0045": {
+    "Código": 98095,
+    "Nombre": "Humion Humo",
+    "Correo": "humo@unal.edu.co",
+    "Materias": [
+      "Programación de Computadores",
+      "134134"
+    ],
+    "Activo": false
+  },
+  "0046": {
+    "Código": 1,
+    "Nombre": "jino jino",
+    "Correo": "un@unal.edu.co",
+    "Materias": [
+      "Pensamiento de como funciona este mundo tan complejo"
+    ],
+    "Activo": true
+  },
+  "0047": {
+    "Código": 74835,
+    "Nombre": "asf sadf",
+    "Correo": "dsaf@unal.edu.co",
+    "Materias": [
+      "Matemáticas"
     ],
     "Activo": true
   }
