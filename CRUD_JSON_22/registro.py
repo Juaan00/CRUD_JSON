@@ -1,18 +1,6 @@
 import funciones
 from color import Color
 '''
-╬════════════════════════════════════════════════════════════════════════════════════════╬
-╬                                                                                        ╬
-╬       __________PROYECTO FINAL PROGRAMACIÓN DE COMPUTADORES, GRUPO 15__________        ╬
-╬                                                                                        ╬
-╬════════════════════════════════════════════════════════════════════════════════════════╬
-
-INTEGRANTES GRUPO [22]:
-- Simón Velásquez Silva
-- Jorley Snehider Salas Rocha
-- Juan Felipe Quiroga Medina
-- Julian David Nieto Rodriguez
-
 El proyecto se divide en 5 archivos:
 
 (1) - registro.py -> inicia el código. 
