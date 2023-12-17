@@ -32,7 +32,7 @@ materias_re = compile("[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s]+$")
 '''
 
 def main():  #función principal
-    print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.CYAN}{Color.BOLD}{'Modulo funciones, este archivo no se ejecutará directamente':>78}{Color.RESET}{'╬':>11}\n╬{'╬':>89}\n╬{'═'*88}╬")
+    print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{'Modulo funciones, este archivo no se ejecutará directamente':>78}{'╬':>11}\n╬{'╬':>89}\n╬{'═'*88}╬")
 
 
 def limpiar():  #función para limpiar la pantalla
@@ -83,63 +83,9 @@ def organizar(dato):        #organiza los datos de manera que se vean de manera 
         numero=key
         for key,value in dato[numero].items():
             if type(value) == list:
-                j=0
-                lista_index_1 = []
-                lista_index_2 = []
-                lista_index_3 = []
-                lista_index_4 = []
-                lista_index_5 = []
-                for i in value:
-                    j=j+len(i)
-                    if j < 70:
-                        lista_index_1.append(i)
-                    elif j <140:
-                        lista_index_2.append(i)
-                    elif j <210:
-                        lista_index_3.append(i)
-                    elif j <280:
-                        lista_index_4.append(i)
-                    elif j <350:
-                        lista_index_5.append(i)
-                if len(lista_index_1) == 0:
-                    lista_index_1.append('Sin registro')
-                    print(f"{'':>5}{Color.BOLD}{key}:{Color.RESET} ", end="")
-                    print(*lista_index_1, sep=', ', end='.\n')
-                elif j < 70:
-                    print(f"{'':>5}{Color.BOLD}{key}:{Color.RESET} ", end="")
-                    print(*lista_index_1, sep=', ', end='.\n')
-                elif j <140:
-                    print(f"{'':>5}{Color.BOLD}{key}:{Color.RESET} ", end="")
-                    print(*lista_index_1, sep=', ', end=',\n')
-                    print(espacio, end='')
-                    print(*lista_index_2, end='.\n')
-                elif j <210:
-                    print(f"{'':>5}{Color.BOLD}{key}:{Color.RESET} ", end="")
-                    print(*lista_index_1, sep=', ', end=',\n')
-                    print(espacio, end='')
-                    print(*lista_index_2, sep=', ', end=',\n')
-                    print(espacio, end='')
-                    print(*lista_index_3, end='.\n')
-                elif j <280:
-                    print(f"{'':>5}{Color.BOLD}{key}:{Color.RESET} ", end="")
-                    print(*lista_index_1, sep=', ', end=',\n')
-                    print(espacio, end='')
-                    print(*lista_index_2, sep=', ', end=',\n')
-                    print(espacio, end='')
-                    print(*lista_index_3, sep=', ', end=',\n')
-                    print(espacio, end='')
-                    print(*lista_index_4, end='.\n')
-                elif j <350:
-                    print(f"{'':>5}{Color.BOLD}{key}:{Color.RESET} ", end="")
-                    print(*lista_index_1, sep=', ', end=',\n')
-                    print(espacio, end='')
-                    print(*lista_index_2, sep=', ', end=',\n')
-                    print(espacio, end='')
-                    print(*lista_index_3, sep=', ', end=',\n')
-                    print(espacio, end='')
-                    print(*lista_index_4, sep=', ', end=',\n')
-                    print(espacio, end='')
-                    print(*lista_index_5, end='.\n')
+                print(f"{'':>5}{Color.BOLD}{key}:{Color.RESET} {value[0]}")
+                for i in value[1:]:
+                    print(f"{'':>5}{'':>10}{i}")  
             elif type(value) == int:
                 pass
             else:
