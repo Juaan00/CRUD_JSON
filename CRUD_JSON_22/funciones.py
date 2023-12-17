@@ -450,23 +450,38 @@ def opcion1():  #Añadir Registros
 '''
 
 def opcion2():  #Modifica Registros
-    limpiar()
-    print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
     funcion_json.consultar(datos)
     if not datos:   #si no hay datos registrados
+        limpiar()
+        print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
         print('\nNo hay datos registrados')
     else:   #si hay datos registrados se imprimen en pantalla con un ciclo for anidado para recorrer el diccionario de datos y sus valores
         n_datos = len(datos)
-        if n_datos == 1:
-            print(f"\nHay {n_datos} registro en la base de datos de estudiantes")
-            for key,value in datos.items():
-                    print(f"{Color.GREEN}Registro{Color.RESET} - {key}{'':>10}{Color.GREEN}Código{Color.RESET} - {value['Código']}")
-            
-        else:
-            print(f"\nHay {n_datos} registros en la base de datos de estudiantes")
-            for key,value in datos.items():
-                    print(f"{Color.GREEN}Registro{Color.RESET} - {key}{'':>10}{Color.GREEN}Código{Color.RESET} - {value['Código']}")
+        while True:
+            limpiar()
+            print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
+            print(f"\nHay {n_datos} registro en la base de datos de estudiantes:")
+            c_o2_escoger= ["(1) - Código", "(2) - Nombre"]
+            print(f"Desea buscar por:")
+            for i in c_o2_escoger:
+                print(f"\n{'':>30}{i}")
+            c_o2 = None
+            input_numerico()
+            c_o2 = número
+            if c_o2 == 1 or c_o2 == 2:
+                break
+            else:
+                error(c_o2)
+                salida()
     while True:
+        limpiar()
+        print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
+        if c_o2 == 1:
+            for key,value in datos.items():
+                print(f"{Color.GREEN}Registro{Color.RESET} - {key} {'-'*5} {Color.GREEN}Código{Color.RESET} - {value['Código']}")
+        elif c_o2 == 2:
+            for key,value in datos.items():
+                print(f"{Color.GREEN}Registro{Color.RESET} - {key} {'-'*5} {Color.GREEN}Nombre{Color.RESET} - {value['Nombre']}")
         print('\nIngrese el número de registro que desea modificar:')
         modificar_datos=None
         input_numerico()
@@ -475,6 +490,7 @@ def opcion2():  #Modifica Registros
             break
         else:
             error(modificar_datos)
+            salida()
     limpiar()
     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
     dato = dict({modificar_datos:datos[modificar_datos]})
@@ -636,10 +652,10 @@ def opcion3():  #Consultar registros
                         error(c_o2)
                 if c_o2 == 1:
                     for key,value in datos.items():
-                        print(f"{Color.GREEN}Registro{Color.RESET} - {key}{'':>10}{Color.GREEN}Código{Color.RESET} - {value['Código']}")
+                        print(f"{Color.GREEN}Registro{Color.RESET} - {key} {'-'*5} {Color.GREEN}Código{Color.RESET} - {value['Código']}")
                 elif c_o2 == 2:
                     for key,value in datos.items():
-                        print(f"{Color.GREEN}Registro{Color.RESET} - {key}{'':>10}{Color.GREEN}Nombre{Color.RESET} - {value['Nombre']}")
+                        print(f"{Color.GREEN}Registro{Color.RESET} - {key} {'-'*5} {Color.GREEN}Nombre{Color.RESET} - {value['Nombre']}")
             while True:
                 print("\nQué registro desea consultar?: ") 
                 num_dato_cons=None
