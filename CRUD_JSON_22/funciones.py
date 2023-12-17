@@ -407,7 +407,7 @@ def opcion2():  #Modifica Registros
             limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
             print(f"\nHay {n_datos} registro en la base de datos de estudiantes:")
-            c_o2_escoger= ["(1) - Código", "(2) - Nombre"]
+            c_o2_escoger= ["(1) - Código", "(2) - Nombre", "(0) - Volver al menú principal"]
             print(f"Desea buscar por:")
             for i in c_o2_escoger:
                 print(f"\n{'':>30}{i}")
@@ -416,125 +416,131 @@ def opcion2():  #Modifica Registros
             c_o2 = número
             if c_o2 == 1 or c_o2 == 2:
                 break
+            elif c_o2 == 0:
+                break
             else:
                 error(c_o2)
                 salida()
-    while True:
-        limpiar()
-        print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-        if c_o2 == 1:
-            for key,value in datos.items():
-                print(f"{Color.GREEN}Registro{Color.RESET} - {key} {'-'*5} {Color.GREEN}Código{Color.RESET} - {value['Código']}")
-        elif c_o2 == 2:
-            for key,value in datos.items():
-                print(f"{Color.GREEN}Registro{Color.RESET} - {key} {'-'*5} {Color.GREEN}Nombre{Color.RESET} - {value['Nombre']}")
-        print('\nIngrese el número de registro que desea modificar:')
-        modificar_datos=None
-        input_numerico()
-        modificar_datos="0"*(4-len(str(número)))+str(número)
-        if modificar_datos in datos.keys():
-            break
-        else:
-            error(modificar_datos)
-            salida()
-    limpiar()
-    print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-    dato = dict({modificar_datos:datos[modificar_datos]})
-    organizar(dato)
-    opciones=['(1) - Código','(2) - Nombre', '(3) - Correo', '(4) - Materias','(5) - Activo', '(0) - Volver al menú principal']
-    print('\nModificar:')
-    for u in opciones:
-        print(f"\n{'':>30}{u}")
-    while True:
-        print('\nEscoja una opción:')
-        escoger = None
-        input_numerico()
-        escoger = número
-        if escoger < 0 or escoger > 5:
-                error(escoger)
-        else:
-            break
-    if escoger == 1:
-        limpiar()
-        print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-        organizar(dato)
-        print('\nIngrese el nuevo código del estudiante:')
+    if c_o2 == 0:
+        print("\nNo se modificò ningún registro")
+        salida()
+    elif c_o2 == 1 or c_o2 == 2:
         while True:
-            nuevo_c = None
+            limpiar()
+            print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
+            if c_o2 == 1:
+                for key,value in datos.items():
+                    print(f"{Color.GREEN}Registro{Color.RESET} - {key} {'-'*5} {Color.GREEN}Código{Color.RESET} - {value['Código']}")
+            elif c_o2 == 2:
+                for key,value in datos.items():
+                    print(f"{Color.GREEN}Registro{Color.RESET} - {key} {'-'*5} {Color.GREEN}Nombre{Color.RESET} - {value['Nombre']}")
+            print('\nIngrese el número de registro que desea modificar:')
+            modificar_datos=None
             input_numerico()
-            nuevo_c = número
-            if match(código_re,str(nuevo_c)):
-                dato[modificar_datos]['Código'] = nuevo_c
-                limpiar()
-                print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-                organizar(dato)
-                guardar_datos(modificar_datos,dato)
+            modificar_datos="0"*(4-len(str(número)))+str(número)
+            if modificar_datos in datos.keys():
                 break
             else:
-                print(f"\n{Color.RED}<<Entrada incorrecta>> [{nuevo_c}] no es un código válido, no puede pasar de 10 digitos.{Color.RESET}")
-    elif escoger == 2:
+                error(modificar_datos)
+                salida()
         limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
+        dato = dict({modificar_datos:datos[modificar_datos]})
         organizar(dato)
-        print('\nDigite el nuevo nombre del estudiante:')
+        opciones=['(1) - Código','(2) - Nombre', '(3) - Correo', '(4) - Materias','(5) - Activo', '(0) - Volver al menú principal']
+        print('\nModificar:')
+        for u in opciones:
+            print(f"\n{'':>30}{u}")
         while True:
-            nuevo_n=None
-            input_alfabetico()
-            nuevo_n = palabra 
-            if match(nombre_re,nuevo_n):
-                dato[modificar_datos]['Nombre'] = nuevo_n
-                limpiar()
-                print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-                organizar(dato)
-                guardar_datos(modificar_datos,dato)
-                break
+            print('\nEscoja una opción:')
+            escoger = None
+            input_numerico()
+            escoger = número
+            if escoger < 0 or escoger > 5:
+                    error(escoger)
             else:
-                print(f"\n{Color.RED}<<Entrada incorrecta>> [{nuevo_n}] debe tener mínimo un nombre y aprellino.{Color.RESET}")
-    elif escoger == 3:
-        limpiar()
-        print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-        organizar(dato)
-        print('\nDigite el nuevo correo del estudiante:     ')
-        nuevo_co=None
-        while True:
+                break
+        if escoger == 1:
+            limpiar()
+            print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
+            organizar(dato)
+            print('\nIngrese el nuevo código del estudiante:')
+            while True:
+                nuevo_c = None
+                input_numerico()
+                nuevo_c = número
+                if match(código_re,str(nuevo_c)):
+                    dato[modificar_datos]['Código'] = nuevo_c
+                    limpiar()
+                    print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
+                    organizar(dato)
+                    guardar_datos(modificar_datos,dato)
+                    break
+                else:
+                    print(f"\n{Color.RED}<<Entrada incorrecta>> [{nuevo_c}] no es un código válido, no puede pasar de 10 digitos.{Color.RESET}")
+        elif escoger == 2:
+            limpiar()
+            print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
+            organizar(dato)
+            print('\nDigite el nuevo nombre del estudiante:')
+            while True:
+                nuevo_n=None
+                input_alfabetico()
+                nuevo_n = palabra 
+                if match(nombre_re,nuevo_n):
+                    dato[modificar_datos]['Nombre'] = nuevo_n
+                    limpiar()
+                    print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
+                    organizar(dato)
+                    guardar_datos(modificar_datos,dato)
+                    break
+                else:
+                    print(f"\n{Color.RED}<<Entrada incorrecta>> [{nuevo_n}] debe tener mínimo un nombre y aprellino.{Color.RESET}")
+        elif escoger == 3:
+            limpiar()
+            print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
+            organizar(dato)
+            print('\nDigite el nuevo correo del estudiante:     ')
             nuevo_co=None
-            input_alfabetico()
-            nuevo_co=palabra
-            if correo.match(nuevo_co):
-                dato[modificar_datos]['Correo'] = nuevo_co
-                limpiar()
-                print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-                organizar(dato)
-                guardar_datos(modificar_datos,dato)
-                break
-            else:
-                print(f"\n{Color.RED}<<Entrada incorrecta>> [{nuevo_co}] no obedece el dominio @unal.edu.co.{Color.RESET}")
-                error(nuevo_co)
-    elif escoger == 4:
-        lista_de_materias.clear()
-        for i in dato[modificar_datos]['Materias']:
-            lista_de_materias.append(i)
-        materias(lista_de_materias)
-        dato[modificar_datos]['Materias'] = lista_de_materias
-        limpiar()
-        print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-        organizar(dato)
-        guardar_datos(modificar_datos,dato)
-    elif escoger == 5:
-        limpiar()
-        print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-        organizar(dato)
-        print('\nEl estudiantes se encuentra activo? Y/N     ')
-        Y_N()
-        bol=(escoger_Y_N=='Y' or escoger_Y_N=='y')
-        dato[modificar_datos]['Activo'] = bol
-        limpiar()
-        print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-        organizar(dato)
-        guardar_datos(modificar_datos,dato)
-    elif escoger == 0:
-        print('\nNo se modificó ningún dato')
-    salida()
+            while True:
+                nuevo_co=None
+                input_alfabetico()
+                nuevo_co=palabra
+                if correo.match(nuevo_co):
+                    dato[modificar_datos]['Correo'] = nuevo_co
+                    limpiar()
+                    print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
+                    organizar(dato)
+                    guardar_datos(modificar_datos,dato)
+                    break
+                else:
+                    print(f"\n{Color.RED}<<Entrada incorrecta>> [{nuevo_co}] no obedece el dominio @unal.edu.co.{Color.RESET}")
+                    error(nuevo_co)
+        elif escoger == 4:
+            lista_de_materias.clear()
+            for i in dato[modificar_datos]['Materias']:
+                lista_de_materias.append(i)
+            materias(lista_de_materias)
+            dato[modificar_datos]['Materias'] = lista_de_materias
+            limpiar()
+            print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
+            organizar(dato)
+            guardar_datos(modificar_datos,dato)
+        elif escoger == 5:
+            limpiar()
+            print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
+            organizar(dato)
+            print('\nEl estudiantes se encuentra activo? Y/N     ')
+            Y_N()
+            bol=(escoger_Y_N=='Y' or escoger_Y_N=='y')
+            dato[modificar_datos]['Activo'] = bol
+            limpiar()
+            print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
+            organizar(dato)
+            guardar_datos(modificar_datos,dato)
+        elif escoger == 0:
+            print('\nNo se modificó ningún dato')
+        salida()
 '''
 ╬════════════════════════════════════════════════════════════════════════════════════════╬
 ╬                                                                                        ╬
