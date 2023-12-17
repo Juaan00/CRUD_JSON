@@ -45,5 +45,22 @@ def adios():    #función para despedirse
     salida()
     limpiar()
 
+def organizar(dato):        #organiza los datos de manera que se vean de manera ordenada
+    espacio=(' '*15)
+    for key,value in dato.items():
+        print(f"\n{Color.BOLD}{'_'*90}{Color.RESET}\n")
+        print(f"{Color.BOLD}Código:{Color.RESET} {value['Código']}\n")
+        numero=key
+        for key,value in dato[numero].items():
+            if type(value) == list:
+                print(f"{'':>5}{Color.BOLD}{key}:{Color.RESET} {value[0]}")
+                for i in value[1:]:
+                    print(f"{'':>5}{'':>10}{i}")  
+            elif type(value) == int:
+                pass
+            else:
+                print(f"{'':>5}{Color.BOLD}{key}:{Color.RESET}{'':>2} {value}")
+    print(f"\n{Color.BOLD}{'_'*90}{Color.RESET}\n")
+
 if __name__ == "__main__":
     funciones_secundarias()

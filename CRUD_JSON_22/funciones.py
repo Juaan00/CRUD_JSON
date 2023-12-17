@@ -33,23 +33,6 @@ materias_re = compile("[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s]+$")
 def main():  #función principal
     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{'Modulo funciones, este archivo no se ejecutará directamente':>78}{'╬':>11}\n╬{'╬':>89}\n╬{'═'*88}╬")
                        
-def organizar(dato):        #organiza los datos de manera que se vean de manera ordenada
-    espacio=(' '*15)
-    for key,value in dato.items():
-        print(f"\n{Color.BOLD}{'_'*90}{Color.RESET}\n")
-        print(f"{Color.BOLD}Código:{Color.RESET} {value['Código']}\n")
-        numero=key
-        for key,value in dato[numero].items():
-            if type(value) == list:
-                print(f"{'':>5}{Color.BOLD}{key}:{Color.RESET} {value[0]}")
-                for i in value[1:]:
-                    print(f"{'':>5}{'':>10}{i}")  
-            elif type(value) == int:
-                pass
-            else:
-                print(f"{'':>5}{Color.BOLD}{key}:{Color.RESET}{'':>2} {value}")
-    print(f"\n{Color.BOLD}{'_'*90}{Color.RESET}\n")
-
 def input_alfabetico(): #función para ingresar datos alfabéticos
     '''
     INPUT DATOS ALFABÉTICOS
@@ -282,7 +265,7 @@ def opcion1():  #Añadir Registros
             'Correo':"N/A",
             'Activo':"N/A",
             'Materias':"N/A"}})
-        organizar(dato)
+        funciones_secundarias.organizar(dato)
         print(f'{Color.GREEN}\nIngrese el nombre del estudiante:{Color.RESET}')
         nombre=None
         input_alfabetico()
@@ -296,14 +279,14 @@ def opcion1():  #Añadir Registros
         funciones_secundarias.limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Ingreso de Registro':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
         dato[registro]['Nombre'] = nombre
-        organizar(dato)
+        funciones_secundarias.organizar(dato)
         print(f'{Color.GREEN}\nIngrese el correo del estudiante:{Color.RESET}')
         correo_i=None
         input_alfabetico()
         correo_i=palabra
         if match(correo,correo_i):
             dato[registro]['Correo'] = correo_i
-            organizar(dato)
+            funciones_secundarias.organizar(dato)
             break
         else:
             print(f"\n{Color.RED}<<Entrada incorrecta>> [{correo_i}] no obedece el dominio @unal.edu.co.{Color.RESET}")
@@ -311,7 +294,7 @@ def opcion1():  #Añadir Registros
     while True:
         funciones_secundarias.limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Ingreso de Registro':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
-        organizar(dato)
+        funciones_secundarias.organizar(dato)
         print(f'{Color.GREEN}\n¿El estudiantes se encuentra activo?{Color.RESET}')
         Y_N()
         if escoger_Y_N == 'Y' or escoger_Y_N == 'y':
@@ -328,7 +311,7 @@ def opcion1():  #Añadir Registros
     while True:
         funciones_secundarias.limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Ingreso de Registro':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
-        organizar(dato)       
+        funciones_secundarias.organizar(dato)       
         print('\nLos datos quedarán registrados de la siguiente manera, ¿Desea grabarlos así?')
         Y_N()
         if escoger_Y_N == 'Y' or escoger_Y_N == 'y':
@@ -404,7 +387,7 @@ def opcion2():  #Modifica Registros
         funciones_secundarias.limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
         dato = dict({modificar_datos:datos[modificar_datos]})
-        organizar(dato)
+        funciones_secundarias.organizar(dato)
         opciones=['(1) - Código','(2) - Nombre', '(3) - Correo', '(4) - Materias','(5) - Activo', '(0) - Volver al menú principal']
         print('\nModificar:')
         for u in opciones:
@@ -421,7 +404,7 @@ def opcion2():  #Modifica Registros
         if escoger == 1:
             funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-            organizar(dato)
+            funciones_secundarias.organizar(dato)
             print('\nIngrese el nuevo código del estudiante:')
             while True:
                 nuevo_c = None
@@ -431,7 +414,7 @@ def opcion2():  #Modifica Registros
                     dato[modificar_datos]['Código'] = nuevo_c
                     funciones_secundarias.limpiar()
                     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-                    organizar(dato)
+                    funciones_secundarias.organizar(dato)
                     guardar_datos(modificar_datos,dato)
                     break
                 else:
@@ -439,7 +422,7 @@ def opcion2():  #Modifica Registros
         elif escoger == 2:
             funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-            organizar(dato)
+            funciones_secundarias.organizar(dato)
             print('\nDigite el nuevo nombre del estudiante:')
             while True:
                 nuevo_n=None
@@ -449,7 +432,7 @@ def opcion2():  #Modifica Registros
                     dato[modificar_datos]['Nombre'] = nuevo_n
                     funciones_secundarias.limpiar()
                     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-                    organizar(dato)
+                    funciones_secundarias.organizar(dato)
                     guardar_datos(modificar_datos,dato)
                     break
                 else:
@@ -457,7 +440,7 @@ def opcion2():  #Modifica Registros
         elif escoger == 3:
             funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-            organizar(dato)
+            funciones_secundarias.organizar(dato)
             print('\nDigite el nuevo correo del estudiante:     ')
             nuevo_co=None
             while True:
@@ -468,7 +451,7 @@ def opcion2():  #Modifica Registros
                     dato[modificar_datos]['Correo'] = nuevo_co
                     funciones_secundarias.limpiar()
                     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-                    organizar(dato)
+                    funciones_secundarias.organizar(dato)
                     guardar_datos(modificar_datos,dato)
                     break
                 else:
@@ -482,19 +465,19 @@ def opcion2():  #Modifica Registros
             dato[modificar_datos]['Materias'] = lista_de_materias
             funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-            organizar(dato)
+            funciones_secundarias.organizar(dato)
             guardar_datos(modificar_datos,dato)
         elif escoger == 5:
             funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-            organizar(dato)
+            funciones_secundarias.organizar(dato)
             print('\nEl estudiantes se encuentra activo? Y/N     ')
             Y_N()
             bol=(escoger_Y_N=='Y' or escoger_Y_N=='y')
             dato[modificar_datos]['Activo'] = bol
             funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
-            organizar(dato)
+            funciones_secundarias.organizar(dato)
             guardar_datos(modificar_datos,dato)
         elif escoger == 0:
             print('\nNo se modificó ningún dato')
@@ -537,7 +520,7 @@ def opcion3():  #Consultar registros
             funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
             dato=datos
-            organizar(dato)
+            funciones_secundarias.organizar(dato)
         elif cantidad_datos == 2:
             funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
@@ -545,7 +528,7 @@ def opcion3():  #Consultar registros
                 funciones_secundarias.impiar()
                 print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
                 dato=datos
-                organizar(dato)
+                funciones_secundarias.organizar(dato)
             else:
                 print(f"\nHay {n_datos} registro en la base de datos de estudiantes:")
                 c_o2_escoger= ["(1) - Código", "(2) - Nombre"]
@@ -575,7 +558,7 @@ def opcion3():  #Consultar registros
                     funciones_secundarias.limpiar()
                     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
                     dato=dict({num_dato_cons:datos[num_dato_cons]}) #se crea un diccionario con el dato ingresado
-                    organizar(dato) #se imprime el dato
+                    funciones_secundarias.organizar(dato) #se imprime el dato
                     break
                 else:
                     funciones_secundarias.error(num_dato_cons)
@@ -617,7 +600,7 @@ def opcion3():  #Consultar registros
                             pass
                     for i in lista_llaves:
                         dict_llaves.update({i:datos[i]})
-                    organizar(dict_llaves)
+                    funciones_secundarias.organizar(dict_llaves)
                 if activos == 2:
                     f=False
                     for key, values in datos.items():
@@ -628,7 +611,7 @@ def opcion3():  #Consultar registros
                             pass
                     for i in lista_llaves:
                         dict_llaves.update({i:datos[i]})
-                    organizar(dict_llaves)
+                    funciones_secundarias.organizar(dict_llaves)
             elif filtro_cons == 1:
                 lista_materias_filtro = []
                 for key, values in datos.items():
@@ -664,7 +647,7 @@ def opcion3():  #Consultar registros
                         pass
                 for i in lista_llaves:
                     dict_llaves.update({i:datos[i]})
-                organizar(dict_llaves)
+                funciones_secundarias.organizar(dict_llaves)
         elif cantidad_datos == 0:
             print('\nNo se consultó ningún dato')
     funciones_secundarias.salida()
@@ -734,7 +717,7 @@ def opcion4():  #Eliminar registros
                 funciones_secundarias.limpiar()
                 print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Eliminar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
                 dato = dict({eliminar:datos[eliminar]})
-                organizar(dato)
+                funciones_secundarias.organizar(dato)
                 print(f'\n{Color.RED}Desea eliminar este dato? esta acción no se puede revertir.{Color.RESET}')
                 Y_N()
                 if escoger_Y_N == 'Y' or escoger_Y_N == 'y':

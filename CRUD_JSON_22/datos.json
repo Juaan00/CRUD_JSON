@@ -471,15 +471,6 @@
     "Activo": true
   },
   "0043": {
-    "Código": 123123123,
-    "Nombre": "Numo Numos",
-    "Correo": "numo@unal.edu.co",
-    "Materias": [
-      "Pensamiento Sistémico"
-    ],
-    "Activo": true
-  },
-  "0044": {
     "Código": 98095,
     "Nombre": "Humion Humo",
     "Correo": "humo@unal.edu.co",
@@ -489,7 +480,7 @@
     ],
     "Activo": false
   },
-  "0045": {
+  "0044": {
     "Código": 74835,
     "Nombre": "asf sadf",
     "Correo": "dsaf@unal.edu.co",
@@ -498,7 +489,7 @@
     ],
     "Activo": true
   },
-  "0046": {
+  "0045": {
     "Código": 1,
     "Nombre": "sdfa asdf",
     "Correo": "adsf@unal.edu.co",
@@ -510,7 +501,7 @@
     ],
     "Activo": false
   },
-  "0047": {
+  "0046": {
     "Código": 1,
     "Nombre": "juan juan",
     "Correo": "jua@unal.edu.co",
@@ -523,7 +514,7 @@
     ],
     "Activo": true
   },
-  "0048": {
+  "0047": {
     "Código": 1234321,
     "Nombre": "Lomo Lomotil",
     "Correo": "lommo@unal.edu.co",
@@ -536,7 +527,7 @@
       "Introducción a la Ingeniería de Sistemas"
     ]
   },
-  "0049": {
+  "0048": {
     "Código": 123217653,
     "Nombre": "Jomin Nomina",
     "Correo": "Nomin@unal.edu.co",
