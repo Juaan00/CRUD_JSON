@@ -353,7 +353,6 @@ def opcion1():  #Añadir Registros
     while True:
         limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Ingreso de Registro':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
-        dato[registro]['Materias'] = lista_de_materias
         organizar(dato)
         print(f'{Color.GREEN}\n¿El estudiantes se encuentra activo?{Color.RESET}')
         Y_N()
@@ -367,6 +366,7 @@ def opcion1():  #Añadir Registros
             salida()
     lista_de_materias.clear()
     materias(lista_de_materias)
+    dato[registro]['Materias'] = lista_de_materias
     while True:
         limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Ingreso de Registro':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
