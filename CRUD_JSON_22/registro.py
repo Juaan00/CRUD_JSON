@@ -2,11 +2,10 @@ import funciones
 from color import Color
 '''
 El proyecto se divide en 5 archivos:
-
 (1) - registro.py -> inicia el código. 
 (2) - funciones.py -> ejecuta las funciones principales del proyecto.
 (3) - funcion_json.py -> se encarga de grabar y extraer la información del archivo JSON.
-(4) - color.py -> se encarga de darle color al texto que se imprime en la consola. (No es necesario para el funcionamiento del programa)
+(4) - color.py -> se encarga de darle color al texto que se imprime en la consola.
 (5) - datos.json -> Donde se almacenan los datos.
 '''
 def programa_registro():

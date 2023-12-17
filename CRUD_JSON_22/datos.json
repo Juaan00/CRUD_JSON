@@ -520,5 +520,31 @@
       "Catedra de Inducción a la Vida Universitaria"
     ],
     "Activo": false
+  },
+  "0048": {
+    "Código": 1,
+    "Nombre": "juan juan",
+    "Correo": "jua@unal.edu.co",
+    "Materias": [
+      "Pensamiento Sistémico",
+      "Introducción a la Ingeniería",
+      "Cálculo Diferencial",
+      "Programación de Computadores",
+      "Catedra de Inducción a la Vida Universitaria"
+    ],
+    "Activo": true
+  },
+  "0049": {
+    "Código": 1234321,
+    "Nombre": "Lomo Lomotil",
+    "Correo": "lomo@unal.edu.co",
+    "Activo": true,
+    "Materias": [
+      "Catedra de Inducción a la Vida Universitaria",
+      "Pensamiento Sistémico",
+      "Cálculo Diferencial",
+      "Programación de Computadores",
+      "Introducción a la Ingeniería de Sistemas"
+    ]
   }
 }
