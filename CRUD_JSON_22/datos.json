@@ -535,5 +535,17 @@
       "Programación de Computadores",
       "Introducción a la Ingeniería de Sistemas"
     ]
+  },
+  "0049": {
+    "Código": 123217653,
+    "Nombre": "Jomin Nomina",
+    "Correo": "Nomin@unal.edu.co",
+    "Activo": true,
+    "Materias": [
+      "Pensamiento Sistémico",
+      "Programación de Computadores",
+      "Cálculo Diferencial",
+      "Catedra de Inducción a la Vida Universitaria"
+    ]
   }
 }

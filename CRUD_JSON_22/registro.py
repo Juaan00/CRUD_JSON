@@ -1,4 +1,5 @@
 import funciones
+import funciones_secundarias
 from color import Color
 '''
 El proyecto se divide en 5 archivos:
@@ -10,7 +11,7 @@ El proyecto se divide en 5 archivos:
 '''
 def programa_registro():
     while True:
-        funciones.pantalla()
+        funciones_secundarias.pantalla()
         funciones.input_numerico()
         entrada_usuario=funciones.número
         if entrada_usuario == 1:
@@ -22,12 +23,12 @@ def programa_registro():
         elif entrada_usuario == 4:
             funciones.opcion4()
         elif entrada_usuario == 0:
-            funciones.adios()
+            funciones_secundarias.adios()
             break
         elif entrada_usuario == None:
-            funciones.salida()
+            funciones_secundarias.salida()
         else:
-            funciones.error(entrada_usuario)
-            funciones.salida()
+            funciones_secundarias.error(entrada_usuario)
+            funciones_secundarias.salida()
 if __name__ == "__main__":
     programa_registro()

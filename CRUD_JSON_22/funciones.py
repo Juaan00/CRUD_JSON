@@ -1,8 +1,7 @@
 import funcion_json     #se llama al modulo funcion_json.py
+import funciones_secundarias    #se llama al modulo funciones_secundarias.py
 from color import Color     #se llama al modulo color.py
-from subprocess import run     #se llama al modulo subprocess, más rápido que os.system()
 from re import compile, match, search   #se llama al modulo re para validar los datos ingresadosq
-from platform import system     #se llama al modulo platform para conocer el sistema operativo que se está usando
 
 '''
 ╬════════════════════════════════════════════════════════════════════════════════════════╬
@@ -33,47 +32,6 @@ materias_re = compile("[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s]+$")
 
 def main():  #función principal
     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{'Modulo funciones, este archivo no se ejecutará directamente':>78}{'╬':>11}\n╬{'╬':>89}\n╬{'═'*88}╬")
-
-
-def limpiar():  #función para limpiar la pantalla
-    if system() == 'Linux' or system() == 'Darwin': #nombre que le da python a MacOS/UNIX
-        return run('clear',shell=True)
-    else:
-        return run('cls',shell=True)
-
-def error(variable):   #función para mostrar error de entrada
-    '''
-    Se muestra un mensaje de error en caso de que el usuario ingrese un dato incorrecto, 
-    se divide en 3 tipos de datos: int, str y bool para mostrar el error correspondiente
-    '''
-    if type(variable) == int:   #si la variable es un entero
-        return print(f"\n{Color.RED}<<Entrada incorrecta>> [{variable}] no es un dato valido.{Color.RESET}")
-    elif type(variable) == str: #si la variable es un string
-        return print(f"\n{Color.RED}<<Entrada incorrecta>> [{variable}] no es un dato valido.{Color.RESET}")
-    elif not variable:  #cuando la variable da un ValueError
-        return print(f"\n{Color.RED}<<Entrada incorrecta>> ingrese un dato valido.{Color.RESET}")
-
-        
-def salida():   #función para salir del programa
-    if system() == 'Linux' or system() == 'Darwin': #opción para linux y MacOS
-        return run('/bin/bash -c \'read -n 1 -s -r -p "\n<<<Presione una tecla para continuar>>>"\'', shell=True), print() 
-    else:   #opción para windows
-        return run('pause',shell=True)
-        
-def pantalla(): #función para mostrar la pantalla principal
-    limpiar()
-    lista=['(1): Crear registros','(2): Modificar registros','(3): Consultar registros', '(4): Eliminar registros', '(0): <Terminar>']
-    print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Programa para el manejo de Estudiantes del Curso':>68}{Color.RESET}{'╬':>21}\n╬{'╬':>89}\n╬{'═'*88}╬")
-    for i in lista:
-        print(f"\n{'':>33}{i}")
-    print(f"\n{Color.GREEN}{'-> Escoja una opción <-':^90}{Color.RESET}")
-            
-def adios():    #función para despedirse
-    limpiar()
-    print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Programa Finalizado':>53}{Color.RESET}{'╬':>36}\n╬{'╬':>89}\n╬{'═'*88}╬")
-    print(f"{Color.BOLD}{Color.RED}\n\n\n\n{'¡ADIOS!':^90}{Color.RESET}")
-    salida()
-    limpiar()
                        
 def organizar(dato):        #organiza los datos de manera que se vean de manera ordenada
     espacio=(' '*15)
@@ -122,13 +80,13 @@ def input_numerico():   #función para ingresar datos numéricos
             if número >= 0: #si el dato es numérico
                 break
             else:   #si el dato es negativo
-                error(número)
+                funciones_secundarias.error(número)
         except ValueError:
-            error(número)
+            funciones_secundarias.error(número)
         except KeyboardInterrupt:
-            error(número)
+            funciones_secundarias.error(número)
         except TypeError:
-            error(número)
+            funciones_secundarias.error(número)
         finally:    #se ejecuta siempre
             return número
 
@@ -144,13 +102,13 @@ def Y_N():  #función para preguntar sí / no
             if escoger_Y_N == 'Y' or escoger_Y_N == 'y' or escoger_Y_N == 'N' or escoger_Y_N == 'n':
                 break
             else:
-                error(escoger_Y_N)
+                funciones_secundarias.error(escoger_Y_N)
         except ValueError:
-            error(escoger_Y_N)
+            funciones_secundarias.error(escoger_Y_N)
         except KeyboardInterrupt:
-            error(escoger_Y_N)
+            funciones_secundarias.error(escoger_Y_N)
         except TypeError:
-            error(escoger_Y_N)
+            funciones_secundarias.error(escoger_Y_N)
         finally:
             return escoger_Y_N
 
@@ -165,7 +123,7 @@ def materias(lista_de_materias):    #función para ingresar las materias del est
     opciones_1 = ['(1) - Ingresar materias', '(2) - Eliminar materia','(3) - Reingresar materias','(0) - Salir del modulo']
     if lista_de_materias == []:
         while True:
-            limpiar()
+            funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modulo Inscripción de Materias':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
             if lista_de_materias == []:
                 print(f"\nEl estudiante no tiene materias registradas")
@@ -180,8 +138,8 @@ def materias(lista_de_materias):    #función para ingresar las materias del est
                 print("\n¿Desea incribir otras materias?")
                 Y_N()
             else:
-                error(materias)
-                salida()
+                funciones_secundarias.error(materias)
+                funciones_secundarias.salida()
                 continue
             if escoger_Y_N =='N' or escoger_Y_N == 'n':
                 break
@@ -190,7 +148,7 @@ def materias(lista_de_materias):    #función para ingresar las materias del est
 
     elif lista_de_materias != []:
         while True:
-            limpiar()
+            funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modulo Inscripción de Materias':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
             organizar_materias(lista_de_materias)
             print(f"Escoja una opción:")
@@ -201,7 +159,7 @@ def materias(lista_de_materias):    #función para ingresar las materias del est
             escoger = número
             if escoger == 1:
                 while True:
-                    limpiar()
+                    funciones_secundarias.limpiar()
                     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modulo Inscripción de Materias':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
                     organizar_materias(lista_de_materias)
                     print(f'{Color.RESET}{Color.GREEN}\nDigite las materias del estudiante:{Color.RESET}')
@@ -218,7 +176,7 @@ def materias(lista_de_materias):    #función para ingresar las materias del est
                             continue
             elif escoger  == 2:
                 while True:
-                    limpiar()
+                    funciones_secundarias.limpiar()
                     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modulo Inscripción de Materias':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
                     organizar_materias(lista_de_materias)
                     print(f'{Color.RESET}{Color.GREEN}\nDigite la materia que desea eliminar:{Color.RESET}')
@@ -235,7 +193,7 @@ def materias(lista_de_materias):    #función para ingresar las materias del est
             elif escoger == 3:
                 lista_de_materias.clear()
                 while True:
-                    limpiar()
+                    funciones_secundarias.limpiar()
                     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modulo Inscripción de Materias':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
                     if lista_de_materias == []:
                         print(f"\nEl estudiante no tiene materias registradas")
@@ -254,12 +212,12 @@ def materias(lista_de_materias):    #función para ingresar las materias del est
                         elif escoger_Y_N == 'Y' or escoger_Y_N == 'y':
                             continue
                         else:
-                            error(materias)
+                            funciones_secundarias.error(materias)
                 break
             elif escoger == 0:
                 break
             else:
-                error(escoger)
+                funciones_secundarias.error(escoger)
     return lista_de_materias
 
 def guardar_datos(modificar_datos,dato): #función para guardar los datos modificados
@@ -303,7 +261,7 @@ def opcion1():  #Añadir Registros
     else:
         registro="0"*(4-len(str(r+1)))+str(r+1)
     while True:
-        limpiar()
+        funciones_secundarias.limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Ingreso de Registro':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
         print(f"{' '*20}Registro de estudiante # {registro}")
         print(f'{Color.GREEN}\nIngrese el código del estudiante:{Color.RESET}')
@@ -314,9 +272,9 @@ def opcion1():  #Añadir Registros
             break
         else:
             print(f"\n{Color.RED} Ingrese un código valido, no puede ser mayor a {Color.SUBRAY}10 digitos.{Color.RESET}")
-            salida()
+            funciones_secundarias.salida()
     while True:
-        limpiar()
+        funciones_secundarias.limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Ingreso de Registro':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
         dato.update({registro:{
             'Código':código,
@@ -333,9 +291,9 @@ def opcion1():  #Añadir Registros
             break
         else:
             print(f"\n{Color.RED}<<Entrada incorrecta>> [{nombre}] debe tener mínimo un nombre y aprellino.{Color.RESET}")
-            salida()
+            funciones_secundarias.salida()
     while True:
-        limpiar()
+        funciones_secundarias.limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Ingreso de Registro':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
         dato[registro]['Nombre'] = nombre
         organizar(dato)
@@ -349,9 +307,9 @@ def opcion1():  #Añadir Registros
             break
         else:
             print(f"\n{Color.RED}<<Entrada incorrecta>> [{correo_i}] no obedece el dominio @unal.edu.co.{Color.RESET}")
-            salida()
+            funciones_secundarias.salida()
     while True:
-        limpiar()
+        funciones_secundarias.limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Ingreso de Registro':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
         organizar(dato)
         print(f'{Color.GREEN}\n¿El estudiantes se encuentra activo?{Color.RESET}')
@@ -363,12 +321,12 @@ def opcion1():  #Añadir Registros
             dato[registro]['Activo'] = False
             break
         else:
-            salida()
+            funciones_secundarias.salida()
     lista_de_materias.clear()
     materias(lista_de_materias)
     dato[registro]['Materias'] = lista_de_materias
     while True:
-        limpiar()
+        funciones_secundarias.limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Ingreso de Registro':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
         organizar(dato)       
         print('\nLos datos quedarán registrados de la siguiente manera, ¿Desea grabarlos así?')
@@ -378,14 +336,14 @@ def opcion1():  #Añadir Registros
             funcion_json.insertar(datos)
             print('\n Los datos han sido registrados de manera satisfactoria')
             datos.clear()
-            salida()  
+            funciones_secundarias.salida()  
             break
         elif escoger_Y_N == 'N' or escoger_Y_N == 'n':
             print('\n Los datos no fueron registrados')
-            salida()
+            funciones_secundarias.salida()
             break
         else:
-            salida()
+            funciones_secundarias.salida()
 '''
 ╬════════════════════════════════════════════════════════════════════════════════════════╬
 ╬                                                                                        ╬
@@ -398,13 +356,13 @@ def opcion1():  #Añadir Registros
 def opcion2():  #Modifica Registros
     funcion_json.consultar(datos)
     if not datos:   #si no hay datos registrados
-        limpiar()
+        funciones_secundarias.limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
         print('\nNo hay datos registrados')
     else:   #si hay datos registrados se imprimen en pantalla con un ciclo for anidado para recorrer el diccionario de datos y sus valores
         n_datos = len(datos)
         while True:
-            limpiar()
+            funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
             print(f"\nHay {n_datos} registro en la base de datos de estudiantes:")
             c_o2_escoger= ["(1) - Código", "(2) - Nombre", "(0) - Volver al menú principal"]
@@ -419,14 +377,14 @@ def opcion2():  #Modifica Registros
             elif c_o2 == 0:
                 break
             else:
-                error(c_o2)
-                salida()
+                funciones_secundarias.error(c_o2)
+                funciones_secundarias.salida()
     if c_o2 == 0:
         print("\nNo se modificò ningún registro")
-        salida()
+        funciones_secundarias.salida()
     elif c_o2 == 1 or c_o2 == 2:
         while True:
-            limpiar()
+            funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
             if c_o2 == 1:
                 for key,value in datos.items():
@@ -441,9 +399,9 @@ def opcion2():  #Modifica Registros
             if modificar_datos in datos.keys():
                 break
             else:
-                error(modificar_datos)
-                salida()
-        limpiar()
+                funciones_secundarias.error(modificar_datos)
+                funciones_secundarias.salida()
+        funciones_secundarias.limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
         dato = dict({modificar_datos:datos[modificar_datos]})
         organizar(dato)
@@ -457,11 +415,11 @@ def opcion2():  #Modifica Registros
             input_numerico()
             escoger = número
             if escoger < 0 or escoger > 5:
-                    error(escoger)
+                    funciones_secundarias.error(escoger)
             else:
                 break
         if escoger == 1:
-            limpiar()
+            funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
             organizar(dato)
             print('\nIngrese el nuevo código del estudiante:')
@@ -471,7 +429,7 @@ def opcion2():  #Modifica Registros
                 nuevo_c = número
                 if match(código_re,str(nuevo_c)):
                     dato[modificar_datos]['Código'] = nuevo_c
-                    limpiar()
+                    funciones_secundarias.limpiar()
                     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
                     organizar(dato)
                     guardar_datos(modificar_datos,dato)
@@ -479,7 +437,7 @@ def opcion2():  #Modifica Registros
                 else:
                     print(f"\n{Color.RED}<<Entrada incorrecta>> [{nuevo_c}] no es un código válido, no puede pasar de 10 digitos.{Color.RESET}")
         elif escoger == 2:
-            limpiar()
+            funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
             organizar(dato)
             print('\nDigite el nuevo nombre del estudiante:')
@@ -489,7 +447,7 @@ def opcion2():  #Modifica Registros
                 nuevo_n = palabra 
                 if match(nombre_re,nuevo_n):
                     dato[modificar_datos]['Nombre'] = nuevo_n
-                    limpiar()
+                    funciones_secundarias.limpiar()
                     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
                     organizar(dato)
                     guardar_datos(modificar_datos,dato)
@@ -497,7 +455,7 @@ def opcion2():  #Modifica Registros
                 else:
                     print(f"\n{Color.RED}<<Entrada incorrecta>> [{nuevo_n}] debe tener mínimo un nombre y aprellino.{Color.RESET}")
         elif escoger == 3:
-            limpiar()
+            funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
             organizar(dato)
             print('\nDigite el nuevo correo del estudiante:     ')
@@ -508,39 +466,39 @@ def opcion2():  #Modifica Registros
                 nuevo_co=palabra
                 if correo.match(nuevo_co):
                     dato[modificar_datos]['Correo'] = nuevo_co
-                    limpiar()
+                    funciones_secundarias.limpiar()
                     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
                     organizar(dato)
                     guardar_datos(modificar_datos,dato)
                     break
                 else:
                     print(f"\n{Color.RED}<<Entrada incorrecta>> [{nuevo_co}] no obedece el dominio @unal.edu.co.{Color.RESET}")
-                    error(nuevo_co)
+                    funciones_secundarias.error(nuevo_co)
         elif escoger == 4:
             lista_de_materias.clear()
             for i in dato[modificar_datos]['Materias']:
                 lista_de_materias.append(i)
             materias(lista_de_materias)
             dato[modificar_datos]['Materias'] = lista_de_materias
-            limpiar()
+            funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
             organizar(dato)
             guardar_datos(modificar_datos,dato)
         elif escoger == 5:
-            limpiar()
+            funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
             organizar(dato)
             print('\nEl estudiantes se encuentra activo? Y/N     ')
             Y_N()
             bol=(escoger_Y_N=='Y' or escoger_Y_N=='y')
             dato[modificar_datos]['Activo'] = bol
-            limpiar()
+            funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modificar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
             organizar(dato)
             guardar_datos(modificar_datos,dato)
         elif escoger == 0:
             print('\nNo se modificó ningún dato')
-        salida()
+        funciones_secundarias.salida()
 '''
 ╬════════════════════════════════════════════════════════════════════════════════════════╬
 ╬                                                                                        ╬
@@ -551,7 +509,7 @@ def opcion2():  #Modifica Registros
 '''
 
 def opcion3():  #Consultar registros
-    limpiar()
+    funciones_secundarias.limpiar()
     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
     funcion_json.consultar(datos)
     opciones_consulta=['(1) - Todos los registros','(2) - Un solo registro','(3) - Filtrar', '(0) - Volver al menú principal']
@@ -574,17 +532,17 @@ def opcion3():  #Consultar registros
                 if cantidad_datos == 1 or cantidad_datos == 2 or cantidad_datos == 3 or cantidad_datos == 0:
                     break
                 else:
-                    error(cantidad_datos)
+                    funciones_secundarias.error(cantidad_datos)
         if cantidad_datos == 1:
-            limpiar()
+            funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
             dato=datos
             organizar(dato)
         elif cantidad_datos == 2:
-            limpiar()
+            funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
             if n_datos == 1:
-                limpiar()
+                funciones_secundarias.impiar()
                 print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
                 dato=datos
                 organizar(dato)
@@ -601,7 +559,7 @@ def opcion3():  #Consultar registros
                     if c_o2 == 1 or c_o2 == 2:
                         break
                     else:
-                        error(c_o2)
+                        funciones_secundarias.error(c_o2)
                 if c_o2 == 1:
                     for key,value in datos.items():
                         print(f"{Color.GREEN}Registro{Color.RESET} - {key} {'-'*5} {Color.GREEN}Código{Color.RESET} - {value['Código']}")
@@ -614,16 +572,16 @@ def opcion3():  #Consultar registros
                 input_numerico()
                 num_dato_cons="0"*(4-len(str(número)))+str(número)
                 if num_dato_cons in datos.keys():  #si el dato ingresado está en el diccionario de datos
-                    limpiar()
+                    funciones_secundarias.limpiar()
                     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
                     dato=dict({num_dato_cons:datos[num_dato_cons]}) #se crea un diccionario con el dato ingresado
                     organizar(dato) #se imprime el dato
                     break
                 else:
-                    error(num_dato_cons)
+                    funciones_secundarias.error(num_dato_cons)
         elif cantidad_datos == 3:
             opciones_filtro=['(1) - Materias', '(2) - Activo', '(0) - Volver al menú principal']
-            limpiar()
+            funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
             for i in opciones_filtro:
                 print(f"\n{'':>30}{i}")
@@ -634,9 +592,9 @@ def opcion3():  #Consultar registros
                 if filtro_cons == 1 or filtro_cons == 2 or filtro_cons == 0:
                     break
                 else:
-                    error(filtro_cons)
+                    funciones_secundarias.error(filtro_cons)
             if filtro_cons == 2:
-                limpiar()
+                funciones_secundarias.limpiar()
                 print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
                 print(f"\n¿Desea consultar los estudiantes (1) - Activos o (2) - Inactivos?")
                 while True:
@@ -646,7 +604,7 @@ def opcion3():  #Consultar registros
                     if activos == 1 or activos == 2:
                         break
                     else:
-                        error(activos)
+                        funciones_secundarias.error(activos)
                 lista_llaves = []
                 dict_llaves = {}
                 if activos == 1:
@@ -680,7 +638,7 @@ def opcion3():  #Consultar registros
                             lista_materias_filtro.sort()
                         else:
                             pass
-                limpiar()
+                funciones_secundarias.limpiar()
                 print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
                 print(f"\n De la lista, escoja la materia que desea consultar: ")
                 organizar_materias(lista_materias_filtro)
@@ -696,7 +654,7 @@ def opcion3():  #Consultar registros
                         continue
                 lista_llaves = []
                 dict_llaves = {}
-                limpiar()
+                funciones_secundarias.limpiar()
                 print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Registros de los Estudiantes':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
                 for key, values in datos.items():
                     m=search(str(jj), str(values['Materias']))
@@ -709,7 +667,7 @@ def opcion3():  #Consultar registros
                 organizar(dict_llaves)
         elif cantidad_datos == 0:
             print('\nNo se consultó ningún dato')
-    salida()
+    funciones_secundarias.salida()
 '''
 ╬════════════════════════════════════════════════════════════════════════════════════════╬
 ╬                                                                                        ╬
@@ -719,7 +677,7 @@ def opcion3():  #Consultar registros
 ╬════════════════════════════════════════════════════════════════════════════════════════╬
 '''
 def opcion4():  #Eliminar registros
-    limpiar()
+    funciones_secundarias.limpiar()
     opciones_4=['(1) - Todos los registros','(2) - Un solo registro','(0) - Volver al menú principal']
     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Eliminar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
     print('\nDesea eliminar:')
@@ -732,7 +690,7 @@ def opcion4():  #Eliminar registros
         if eliminar_datos == 1 or eliminar_datos == 2 or eliminar_datos == 0:
             break
         else:
-            error(eliminar_datos)
+            funciones_secundarias.error(eliminar_datos)
     if eliminar_datos == 1:
         funcion_json.consultar(datos)
         print(f'\n{Color.RED}¿Desea eliminar toda la base de datos? esta acción no se puede revertir.{Color.RESET}')
@@ -743,9 +701,9 @@ def opcion4():  #Eliminar registros
             print('\nLa base de datos ha sido eliminada')
         elif escoger_Y_N == 'N' or escoger_Y_N == 'n':
             print('\nLa base de datos no ha sido eliminada')    
-        salida()
+        funciones_secundarias.salida()
     elif eliminar_datos == 2:
-        limpiar()
+        funciones_secundarias.limpiar()
         print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Eliminar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
         funcion_json.consultar(datos)
         print(f"\nHay {Color.RED}{len(datos.keys())}{Color.RESET} registrados en la base de datos.")
@@ -760,7 +718,7 @@ def opcion4():  #Eliminar registros
             if c_o2 == 1 or c_o2 == 2:
                 break
             else:
-                error(c_o2)
+                funciones_secundarias.error(c_o2)
         if c_o2 == 1:
             for key,value in datos.items():
                 print(f"{Color.GREEN}Registro{Color.RESET} - {key}{'':>10}{Color.GREEN}Código{Color.RESET} - {value['Código']}")
@@ -773,7 +731,7 @@ def opcion4():  #Eliminar registros
             input_numerico()
             eliminar="0"*(4-len(str(número)))+str(número)
             if eliminar in datos.keys():
-                limpiar()
+                funciones_secundarias.limpiar()
                 print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Eliminar Registro':>50}{Color.RESET}{'╬':>39}\n╬{'╬':>89}\n╬{'═'*88}╬")
                 dato = dict({eliminar:datos[eliminar]})
                 organizar(dato)
@@ -790,17 +748,17 @@ def opcion4():  #Eliminar registros
                     nuevos_ordenados.clear()
                     datos.clear()
                     print('\nEl dato ha sido eliminado')
-                    salida()
+                    funciones_secundarias.salida()
                     break
                 elif escoger_Y_N == 'N' or escoger_Y_N == 'n':
                     print('\nEl dato no ha sido eliminado')
-                    salida()
+                    funciones_secundarias.salida()
                     break
             else:
-                error(eliminar)
+                funciones_secundarias.error(eliminar)
     elif eliminar_datos == 0:
         print('\nNo se eliminó ningún dato')
-        salida()
+        funciones_secundarias.salida()
 
 if __name__ == "__main__":  #indica que el modulo no se ejecutará automáticamente a menos que sea llamado <funciones.funcion_que_se_llama()>
     main()  #se llama la función main()
