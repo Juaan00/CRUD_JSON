@@ -3,14 +3,13 @@ import funciones_secundarias    #se llama al modulo funciones_secundarias.py
 from color import Color     #se llama al modulo color.py
 from re import compile, match, search   #se llama al modulo re para validar los datos ingresadosq
 
+def main():  #función principal
+    print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{'Modulo funciones, este archivo no se ejecutará directamente':>78}{'╬':>11}\n╬{'╬':>89}\n╬{'═'*88}╬")
+
 '''
 ╬════════════════════════════════════════════════════════════════════════════════════════╬
-╬                                                                                        ╬
 ╬                         __________MODULO FUNCIONES__________                           ╬
 ╬        Todas las acciones principales del código serán llamadas de este archivo.       ╬
-╬                             __________VARIABLES__________                              ╬
-╬                Variables vacias que se utilizarán a lo largo del código.               ╬
-╬                                                                                        ╬
 ╬════════════════════════════════════════════════════════════════════════════════════════╬
 '''
 
@@ -20,18 +19,6 @@ correo = compile("^[a-zA-Z0-9_]+@unal\.edu\.co$")    #expresión regular con el 
 código_re = compile("^[0-9]{1,10}$")  #expresión regular con el fin de validar el código del estudiante
 nombre_re = compile("^[a-zA-ZáéíóúñÑÁÉÍÓÚüÜ]+\s+[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$") #expresión regular con el fin de validar el nombre del estudiante
 materias_re = compile("[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s]+$")
-
-'''
-╬════════════════════════════════════════════════════════════════════════════════════════╬
-╬                                                                                        ╬
-╬                    __________FUNCIONES SECUNDARIAS__________                           ╬
-╬        Funciones que simplifican acciones repetitivas a lo largo del código            ╬
-╬                                                                                        ╬
-╬════════════════════════════════════════════════════════════════════════════════════════╬
-'''
-
-def main():  #función principal
-    print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{'Modulo funciones, este archivo no se ejecutará directamente':>78}{'╬':>11}\n╬{'╬':>89}\n╬{'═'*88}╬")
                        
 def input_alfabetico(): #función para ingresar datos alfabéticos
     '''
@@ -222,14 +209,10 @@ def guardar_datos(modificar_datos,dato): #función para guardar los datos modifi
 
 '''
  ╬════════════════════════════════════════════════════════════════════════════════════════╬
- ╬                                                                                        ╬
  ╬                    __________FUNCIONES PRINCIPALES__________                           ╬
  ╬         Las cuatro funciones principales que definen la naturaleza del código          ╬
- ╬                                                                                        ╬
  ╬════════════════════════════════════════════════════════════════════════════════════════╬
- ╬                                                                                        ╬
  ╬                   __________OPCIÓN #1 AÑADIR REGISTROS__________                       ╬
- ╬                                                                                        ╬
  ╬════════════════════════════════════════════════════════════════════════════════════════╬
 '''
 

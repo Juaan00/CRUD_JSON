@@ -1,7 +1,6 @@
 from json import load, dump     #Se importa la librería JSON
 '''
 ╬════════════════════════════════════════════════════════════════════════════════════════╬
-╬                                                                                        ╬
 ╬                   __________MODULO DE FUNCIONES JSON__________                         ╬
 ╬               Aquí se encargará de Insertar, Consultar y Modificar                     ╬
 ╬                       los datos que se almacenan en el JSON                            ╬
