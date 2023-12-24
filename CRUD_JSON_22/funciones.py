@@ -21,7 +21,6 @@ def input_alfabetico(): #función para ingresar datos alfabéticos
     while True:
         try:
             global palabra  #se declara la variable como global para que pueda ser usada en otras funciones
-            palabra = None #se declara la variable como None para que no se repita el valor anterior
             palabra = input(f"\n{Color.GREEN}{'':>10}Ingrese el dato:{Color.RESET}    ")
             if palabra:
                 break
@@ -83,22 +82,22 @@ def organizar_materias(lista_de_materias):   #función para organizar las materi
         print(f"{'':>5}{i}")
     print(f"\n{Color.BOLD}{'_'*90}{Color.RESET}\n")
 
-def materias(lista_de_materias):    #función para ingresar las materias del estudiante
+def materias (lista_de_materias):    #función para ingresar las materias del estudiante
     opciones_1 = ['(1) - Ingresar materias', '(2) - Eliminar materia','(3) - Reingresar materias','(0) - Salir del modulo']
-    if lista_de_materias == []:
+    if v.lista_de_materias == []:
         while True:
             funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modulo Inscripción de Materias':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
-            if lista_de_materias == []:
+            if v.lista_de_materias == []:
                 print(f"\nEl estudiante no tiene materias registradas")
             else:
-                organizar_materias(lista_de_materias)
+                organizar_materias(v.lista_de_materias)
             print(f'{Color.RESET}{Color.GREEN}\nDigite las materias del estudiante:{Color.RESET}')
             materias=None
             input_alfabetico()
             materias=palabra
             if match(compile(v.materias_re), materias):
-                lista_de_materias.append(materias)
+                v.lista_de_materias.append(materias)
                 print("\n¿Desea incribir otras materias?")
                 Y_N()
             else:
@@ -110,11 +109,11 @@ def materias(lista_de_materias):    #función para ingresar las materias del est
             elif escoger_Y_N == 'Y' or escoger_Y_N == 'y':
                 continue
 
-    elif lista_de_materias != []:
+    elif v.lista_de_materias != []:
         while True:
             funciones_secundarias.limpiar()
             print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modulo Inscripción de Materias':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
-            organizar_materias(lista_de_materias)
+            organizar_materias(v.lista_de_materias)
             print(f"Escoja una opción:")
             for i in opciones_1:
                 print(f"\n{'':>30}{i}")
@@ -125,13 +124,13 @@ def materias(lista_de_materias):    #función para ingresar las materias del est
                 while True:
                     funciones_secundarias.limpiar()
                     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modulo Inscripción de Materias':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
-                    organizar_materias(lista_de_materias)
+                    organizar_materias(v.lista_de_materias)
                     print(f'{Color.RESET}{Color.GREEN}\nDigite las materias del estudiante:{Color.RESET}')
                     materias=None
                     input_alfabetico()
                     materias=palabra
                     if match(compile(v.materias_re), materias):
-                        lista_de_materias.append(materias)
+                        v.lista_de_materias.append(materias)
                         print("\n¿Desea incribir otras materias?")
                         Y_N()
                         if escoger_Y_N =='N' or escoger_Y_N == 'n':
@@ -142,12 +141,12 @@ def materias(lista_de_materias):    #función para ingresar las materias del est
                 while True:
                     funciones_secundarias.limpiar()
                     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modulo Inscripción de Materias':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
-                    organizar_materias(lista_de_materias)
+                    organizar_materias(v.lista_de_materias)
                     print(f'{Color.RESET}{Color.GREEN}\nDigite la materia que desea eliminar:{Color.RESET}')
                     eliminar_materia=None
                     input_alfabetico()
                     eliminar_materia=palabra
-                    lista_de_materias.remove(eliminar_materia)
+                    v.lista_de_materias.remove(eliminar_materia)
                     print(f"\nLa materia {palabra} fue eliminada exitosamente ¿Desea eliminar otra materia?")
                     Y_N()
                     if escoger_Y_N =='N' or escoger_Y_N == 'n':
@@ -155,11 +154,11 @@ def materias(lista_de_materias):    #función para ingresar las materias del est
                     elif escoger_Y_N == 'Y' or escoger_Y_N == 'y':
                         continue
             elif escoger == 3:
-                lista_de_materias.clear()
+                v.lista_de_materias.clear()
                 while True:
                     funciones_secundarias.limpiar()
                     print(f"╬{'═'*88}╬\n╬{'╬':>89}\n{'╬'}{Color.BLUE}{Color.BOLD}{'Modulo Inscripción de Materias':>55}{Color.RESET}{'╬':>34}\n╬{'╬':>89}\n╬{'═'*88}╬")
-                    if lista_de_materias == []:
+                    if v.lista_de_materias == []:
                         print(f"\nEl estudiante no tiene materias registradas")
                     else:
                         organizar_materias(lista_de_materias)

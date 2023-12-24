@@ -1,6 +1,5 @@
 import funciones
 import funciones_secundarias
-from color import Color
 '''
 El proyecto se divide en 5 archivos:
 (1) - registro.py -> inicia el código. 

@@ -538,5 +538,16 @@
       "Cálculo Diferencial",
       "Catedra de Inducción a la Vida Universitaria"
     ]
+  },
+  "0049": {
+    "Código": 8765123,
+    "Nombre": "Alex Turner",
+    "Correo": "atun@unal.edu.co",
+    "Activo": true,
+    "Materias": [
+      "Perhaps Vampires is a bit strong but",
+      "A certain romance",
+      "I bet you look good on the dancefloor"
+    ]
   }
 }
